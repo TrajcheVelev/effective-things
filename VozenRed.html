@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vozen Red</title>
+<meta charset="utf-8">
+   
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="css/bootstrap.css">   
+    
+   <style>
+       body {
+       background-color: #cccccc;
+        
+           }
+       #container{
+           
+        
+       }
+       #title{
+           font-size: 30px;
+           font-family: Arial, Helvetica, sans-serif;
+           font-style: italic;
+       }
+       
+       #Destination{
+          border: 1px solid;
+          border-radius: 2px;
+            padding: 4px;
+       }
+       
+       #input{
+           width:auto;
+           text-align:center;
+           }
+       #select{
+           border: 1px solid;
+           border-radius: 2px;
+           padding: 6px;
+           font-size: 15px;
+           
+           
+       }
+       
+       .ull{
+           font-size:21px;
+             text-align: center;
+       }
+       li{
+        
+           display:inline-block;
+           font-weight: bold;
+           padding: 0 40px 0 30px;
+          font-family: Arial, Helvetica, sans-serif;
+       }
+       a {
+    color:black; 
+    text-decoration:none;
+    cursor:pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+           }
+       a:hover {
+           
+           text-decoration: none;
+       }
+       .naslov{
+     font-size: 15pt;
+    font-style: italic;
+           text-align: center;
+           
+       }
+       
+       
+       #tabela {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 72%;
+  float:right;
+  
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+   
+}
+       th{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  color:red;
+       }
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+       #button{
+   background-color: gray;
+    border-radius: 4px;
+    color: white;
+    font-size: 1em;
+    height: 30px;
+    width: 96px;
+    margin: 10px;
+    border: 0px solid;
+    cursor:pointer;
+ 
+  transition-duration: 0.4s;
+   
+           
+ }
+       #button:hover{
+           background-color: #422929;
+       }
+       
+       .flags{
+           
+           margin-left:95%;
+           width:3%;
+       }
+       
+       .headerr{
+           background-color: black;
+           height: 30px;
+           
+       }
+       
+       .footer{
+           
+       }
+       
+       @media (max-width: 520px){
+           #tabela{
+               width:auto;
+           }
+           .ull{
+               display:flex;  
+            flex-wrap: wrap;
+           
+           }
+           .headerr{
+    
+           }
+           .flags{
+               display:inline-block;
+           }
+       }
+    </style> 
+    
+    <script>
+        
+  window.onload = function() {
+  document.getElementById('tabela').style.display = 'none';
+};    
+        
+    /*    
+       var object1 =  {city: "Skopje",
+                       line: "44,28,31", 
+                       days: "Monday,Wednesday,Saturday",
+                       time: "09:00 – 09:45, 10:00 – 10:45, 13:15 - 13:45"
+                      };
+        
+       var object2 = { 
+           city: "Strumica", 
+           line: "2,6,23", 
+           days: "Wednesday,Thursday",
+           time: "09:00 – 09:45, 10:00 – 10:45, 12:00 - 12:45"
+};
+        
+       var object3 = {
+           city: "Bitola", 
+           line: "30,20,15", 
+          days: "Friday,Saturday,Sunday", 
+          time: "09:00 – 09:45, 10:00 – 10:45"
+       };
+        
+       var object4 = {
+           city: "Ohrid", 
+           line: "26,20,18", 
+           days: "Sunday,Monday,Tuesday",
+           time: "09:00 – 09:45, 10:00 – 10:45, 14:00 - 14:45"
+       };
+        */
+        
+        class CitySkopje {
+            constructor(city,line,days,time){
+                this.cityName =city;
+                this.cityLine= line;
+                this.cityDays = days;
+                this.cityTime = time;
+            }   
+     }  
+        myCity = new CitySkopje("Skopje", "44,33,22,11","Monday,Tuesday,Friday","09:00-09:45,10:00-10:45")
+        
+        class CityStrumica {
+            constructor(city,line,days,time){
+                this.cityName =city;
+                this.cityLine= line;
+                this.cityDays = days;
+                this.cityTime = time;
+            }   
+     }  
+        myCity1 = new CityStrumica("Strumica", "2, 6, 23","Wednesday,Saturday,Sunday","12:00-12:45,13:00-13:45")
+        
+      class CityBitola{
+            constructor(city,line,days,time){
+                this.cityName =city;
+                this.cityLine= line;
+                this.cityDays = days;
+                this.cityTime = time;
+            }   
+     }  
+        myCity2 = new CityBitola("Bitola", "7,20,24,25","Wednesday,Friday,Sunday","12:00-12:45,13:00-13:45")  
+        
+        class CityOhrid{
+            constructor(city,line,days,time){
+                this.cityName =city;
+                this.cityLine= line;
+                this.cityDays = days;
+                this.cityTime = time;
+            }   
+     }  
+        myCity3 = new CityOhrid("Ohrid", "7, 20","Monday,Friday","14:00-14:45,15:00-15:45")  
+        
+        function clickFunction(){
+          
+        document.getElementById('tabela').style.display = 'block';
+           var selectedvalue = document.getElementById("select").value;
+           if(selectedvalue == "skopje") {
+                document.getElementById("demo").innerHTML =  myCity.cityName;
+                 document.getElementById("demo1").innerHTML =  myCity.cityLine;
+                document.getElementById("demo2").innerHTML =  myCity.cityDays;
+                 document.getElementById("demo3").innerHTML =  myCity.cityTime;
+            } else{
+               document.getElementById("demo").innerHTML = "";
+                 document.getElementById("demo1").innerHTML =  "";
+                document.getElementById("demo2").innerHTML =  "";
+                 document.getElementById("demo3").innerHTML =  "";
+            }
+          
+          
+            if(selectedvalue == "strumica") {
+                document.getElementById("demo4").innerHTML =  myCity1.cityName;
+                 document.getElementById("demo5").innerHTML =  myCity1.cityLine;
+                document.getElementById("demo6").innerHTML =  myCity1.cityDays;
+                 document.getElementById("demo7").innerHTML = myCity1.cityTime;
+            } else{
+                document.getElementById("demo4").innerHTML = "";
+                 document.getElementById("demo5").innerHTML =  "";
+                document.getElementById("demo6").innerHTML =  "";
+                 document.getElementById("demo7").innerHTML =  "";
+            } 
+          
+          
+           if(selectedvalue == "bitola") {
+                document.getElementById("demo8").innerHTML =  myCity2.cityName;
+                 document.getElementById("demo9").innerHTML =  myCity2.cityLine;
+                document.getElementById("demo10").innerHTML =  myCity2.cityDays;
+                 document.getElementById("demo11").innerHTML =  myCity2.cityTime;
+            } else{
+               document.getElementById("demo8").innerHTML = "";
+                 document.getElementById("demo9").innerHTML =  "";
+                document.getElementById("demo10").innerHTML =  "";
+                 document.getElementById("demo11").innerHTML =  "";
+            }
+          
+           if(selectedvalue == "ohrid") {
+                document.getElementById("demo12").innerHTML =  myCity3.cityName;
+                 document.getElementById("demo13").innerHTML =  myCity3.cityLine;
+                document.getElementById("demo14").innerHTML =  myCity3.cityDays;
+                 document.getElementById("demo15").innerHTML =  myCity3.cityTime;
+            } else{
+               document.getElementById("demo12").innerHTML = "";
+                 document.getElementById("demo13").innerHTML =  "";
+                document.getElementById("demo14").innerHTML =  "";
+                 document.getElementById("demo15").innerHTML =  "";
+            }
+          
+          }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+      function clickFunction(){
+          
+        document.getElementById('tabela').style.display = 'block';
+           var selectedvalue = document.getElementById("select").value;
+           if(selectedvalue == "skopje") {
+                document.getElementById("demo").innerHTML =  object1.city;
+                 document.getElementById("demo1").innerHTML =  object1.line;
+                document.getElementById("demo2").innerHTML =  object1.days;
+                 document.getElementById("demo3").innerHTML =  object1.time;
+            } else{
+               document.getElementById("demo").innerHTML = "";
+                 document.getElementById("demo1").innerHTML =  "";
+                document.getElementById("demo2").innerHTML =  "";
+                 document.getElementById("demo3").innerHTML =  "";
+            }
+          
+          
+            if(selectedvalue == "strumica") {
+                document.getElementById("demo4").innerHTML =  object2.city;
+                 document.getElementById("demo5").innerHTML =  object2.line;
+                document.getElementById("demo6").innerHTML =  object2.days;
+                 document.getElementById("demo7").innerHTML =  object2.time;
+            } else{
+                document.getElementById("demo4").innerHTML = "";
+                 document.getElementById("demo5").innerHTML =  "";
+                document.getElementById("demo6").innerHTML =  "";
+                 document.getElementById("demo7").innerHTML =  "";
+            } 
+          
+          
+           if(selectedvalue == "bitola") {
+                document.getElementById("demo8").innerHTML =  object3.city;
+                 document.getElementById("demo9").innerHTML =  object3.line;
+                document.getElementById("demo10").innerHTML =  object3.days;
+                 document.getElementById("demo11").innerHTML =  object3.time;
+            } else{
+               document.getElementById("demo8").innerHTML = "";
+                 document.getElementById("demo9").innerHTML =  "";
+                document.getElementById("demo10").innerHTML =  "";
+                 document.getElementById("demo11").innerHTML =  "";
+            }
+          
+           if(selectedvalue == "ohrid") {
+                document.getElementById("demo12").innerHTML =  object4.city;
+                 document.getElementById("demo13").innerHTML =  object4.line;
+                document.getElementById("demo14").innerHTML =  object4.days;
+                 document.getElementById("demo15").innerHTML =  object4.time;
+            } else{
+               document.getElementById("demo12").innerHTML = "";
+                 document.getElementById("demo13").innerHTML =  "";
+                document.getElementById("demo14").innerHTML =  "";
+                 document.getElementById("demo15").innerHTML =  "";
+            }
+          
+          }
+        */
+</script>
+</head>
+    
+    
+    
+<body>
+    
+    <header class="headerr">
+    <div class="flags">
+        <a> <img src="macedonia_flag.png"></a>
+        <a> <img src="united_kingdom_great_britain.png"></a>
+            </div>
+  </header>
+    <div id="start">
+     <h1 id="title"> Возен Ред</h1>
+     <img src="logo_bemidjibus.png" style="width:10%;">
+        
+     </div>
+    
+    
+    <div id="toolbar">
+    <ul class="ull">
+         <li> <a href="#">Почетна</a></li>
+         <li> <a href="#">За нас</a> </li>
+          <li> <a href="#">Автобуски Станици</a> </li>
+          <li> <a href="#">Возен ред</a> </li>
+</ul> 
+    </div>
+     
+     <hr style="border: 1px solid red;">
+    <br>
+<h3 class="naslov">Пребарување на возни линии кои тргнуваат од Скопје</h3>
+    <br>
+    <br>
+     <div id="container">
+        <div id="input">
+            <img src="32x32_1.gif">
+              
+              <select id="select">
+     <option disabled selected value>Pick a destination</option>
+     <option value="skopje">Скопје</option>             
+    <option value="strumica">Струмица</option>
+    <option value="bitola">Битола</option>
+     <option value="ohrid">Охрид</option>
+</select>  
+            <button class="button" id="button" onclick="clickFunction()">Search</button>
+             
+        </div>
+         <br>
+         <br>
+         
+   <table id="tabela">
+  <tr>
+    <th>Град</th>
+    <th>Автобуска Линија</th>
+    <th>Денови на Поаѓање </th>
+    <th>Време</th>
+   
+  </tr>
+  <tr>
+    <td id="demo"></td>
+    <td id="demo1"></td>
+     <td id="demo2"></td>
+    <td id="demo3"></td>
+  </tr>
+  <tr>
+   <td id="demo4"></td>
+    <td id="demo5"></td>
+     <td id="demo6"></td>
+    <td id="demo7"></td>
+  </tr>
+  <tr>
+    <td id="demo8"></td>
+    <td id="demo9"></td>
+     <td id="demo10"></td>
+    <td id="demo11"></td>
+  </tr>
+  <tr>
+     <td id="demo12"></td>
+    <td id="demo13"></td>
+     <td id="demo14"></td>
+    <td id="demo15"></td>
+  </tr>
+  </table>
+      
+         
+   
+    </div>
+    
+
+
+    </body>
+</html>
