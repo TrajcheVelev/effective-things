@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    
+<style>
+    
+     body {
+       background-color: #cccccc;
+        
+           }
+    
+    #title{
+        font-size: 30px;
+           font-family: Arial, Helvetica, sans-serif;
+           font-style: italic;
+        
+    }
+    #picture{
+        width:15%;
+    }
+    
+    #headerr{
+           background-color: black;
+           height: 30px;
+    }
+    
+    #flags{
+         
+           
+           margin-left:95%;
+           width:3%;
+    }
+    
+     #ull{
+           font-size:21px;
+             text-align: center;
+        
+}
+
+    #li1, #li2, #li3, #li4{
+        
+        display:inline-block;
+           font-weight: bold;
+           padding: 0 40px 0 30px;
+          font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    
+    #a1, #a2, #a3, #a4{
+         color:black; 
+    text-decoration:none;
+    cursor:pointer; 
+  transition-duration: 0.4s;
+    
+    
+    }
+    #a1:hover{
+           color:burlywood;
+    }
+    #a2:hover{
+        color:burlywood;
+    }
+    #a3:hover{
+        color:burlywood;
+    }
+    #a4:hover{
+        color:burlywood;
+    }
+    
+    .second{
+         font-size: 15pt;
+    font-style: italic;
+           text-align: center;  
+    }
+    
+     #button{
+   background-color: gray;
+    border-radius: 4px;
+    color: white;
+    font-size: 1em;
+    height: 30px;
+    width: 96px;
+    margin: 10px;
+    border: 0px solid;
+    cursor:pointer;
+ 
+  transition-duration: 0.4s;
+   
+           
+ }
+     #button:hover{
+           background-color: #422929;
+       }
+    
+    
+        #select{
+           border: 1px solid;
+           border-radius: 2px;
+           padding: 6px;
+           font-size: 15px;
+    }
+    
+     #tabela {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:40%;
+  float:left;
+        margin-left:30%;
+  
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+   
+}
+       th{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  color:red;
+       }
+tr:nth-child(even) {
+  background-color: #dddddd;
+}   
+    
+    
+</style>
+  
+
+<script type="text/babel">
+
+
+const myelement1 = <h1 id="title">Возен Ред</h1>;
+ReactDOM.render(myelement1, document.getElementById('root'));
+
+const myImg = <img src="logo_bemidjibus.png" id="picture"></img>
+ReactDOM.render(myImg, document.getElementById('root1'));
+
+const myImgMacedonia = <img src="macedonia_flag.png"></img>
+ReactDOM.render(myImgMacedonia, document.getElementById('link1'));
+
+const myImgUnitedKingdom = <img src="united_kingdom_great_britain.png"></img>
+ReactDOM.render(myImgUnitedKingdom, document.getElementById('link2'));
+
+const myList = (
+  <ul id="ull">
+         <li id="li1"> <a href="#" id="a1">Почетна</a></li>
+         <li id="li2"> <a href="#" id="a2">За нас</a> </li>
+          <li id="li3"> <a href="#" id="a3">Автобуски Станици</a> </li>
+          <li id="li4"> <a href="#" id="a4">Возен ред</a> </li>
+</ul> 
+);
+ReactDOM.render(myList, document.getElementById('toolbar'));
+
+const SecondTitle = <h3 class="second">Пребарување на возни линии кои тргнуваат од Скопје </h3>
+ReactDOM.render(SecondTitle, document.getElementById('secondTitle'));
+
+              
+const myImgBus = <img src="32x32_1.gif"></img>
+ReactDOM.render(myImgBus, document.getElementById('imgsmall'));
+
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    }
+  render() {
+    return (
+      <form>
+ <select id="select">
+   <option disabled selected value>Pick a destination</option>
+     <option value="skopje">Скопје</option>             
+    <option value="strumica">Струмица</option>
+    <option value="bitola">Битола</option>
+     <option value="ohrid">Охрид</option>
+                </select>
+      </form>
+    );  
+  }
+}
+
+
+ReactDOM.render(<MyForm />, document.getElementById('selekcija'));
+
+const Button = <button class="button" id="button" onclick="clickFunction()">Search</button>
+      ReactDOM.render(Button,document.getElementById("kopce"))
+      
+      
+      
+      
+      function clickFunction(){
+             
+             
+             document.getElementById('tabela').style.display = 'block';
+           var selectedvalue = document.getElementById("select").value;
+             
+            
+                let Skopje = new City("Skopje", "44,33,22,11","Monday,Tuesday,Friday","09:00-09:45,10:00-10:45")
+                let Strumica = new City("Strumica", "2, 6, 23","Wednesday,Saturday,Sunday","12:00-12:45,13:00-13:45")
+                let Bitola = new City("Bitola", "7,20,24,25","Wednesday,Friday,Sunday","12:00-12:45,13:00-13:45")
+                let Ohrid = new City("Ohrid", "7, 20","Monday,Friday","14:00-14:45,15:00-15:45") 
+             
+              if(selectedvalue == "skopje") {
+                document.getElementById("demo").innerHTML =   Skopje.cityName;
+                 document.getElementById("demo1").innerHTML =  Skopje.cityLine;
+                document.getElementById("demo2").innerHTML =  Skopje.cityDays;
+                 document.getElementById("demo3").innerHTML =  Skopje.cityTime;
+            } else{
+               document.getElementById("demo").innerHTML = "";
+                 document.getElementById("demo1").innerHTML =  "";
+                document.getElementById("demo2").innerHTML =  "";
+                 document.getElementById("demo3").innerHTML =  "";
+            }
+          
+          
+            if(selectedvalue == "strumica") {
+                document.getElementById("demo4").innerHTML =  Strumica.cityName;
+                 document.getElementById("demo5").innerHTML =  Strumica.cityLine;
+                document.getElementById("demo6").innerHTML =  Strumica.cityDays;
+                 document.getElementById("demo7").innerHTML =  Strumica.cityTime;
+            } else{
+                document.getElementById("demo4").innerHTML = "";
+                 document.getElementById("demo5").innerHTML =  "";
+                document.getElementById("demo6").innerHTML =  "";
+                 document.getElementById("demo7").innerHTML =  "";
+            } 
+          
+          
+           if(selectedvalue == "bitola") {
+                document.getElementById("demo8").innerHTML =  Bitola.cityName;
+                 document.getElementById("demo9").innerHTML =  Bitola.cityLine;
+                document.getElementById("demo10").innerHTML =  Bitola.cityDays;
+                 document.getElementById("demo11").innerHTML = Bitola.cityTime;
+            } else{
+               document.getElementById("demo8").innerHTML = "";
+                 document.getElementById("demo9").innerHTML =  "";
+                document.getElementById("demo10").innerHTML =  "";
+                 document.getElementById("demo11").innerHTML =  "";
+            }
+          
+           if(selectedvalue == "ohrid") {
+                document.getElementById("demo12").innerHTML =  Ohrid.cityName;
+                 document.getElementById("demo13").innerHTML =  Ohrid.cityLine;
+                document.getElementById("demo14").innerHTML =  Ohrid.cityDays;
+                 document.getElementById("demo15").innerHTML =  Ohrid.cityTime;
+            } else{
+               document.getElementById("demo12").innerHTML = "";
+                 document.getElementById("demo13").innerHTML =  "";
+                document.getElementById("demo14").innerHTML =  "";
+                 document.getElementById("demo15").innerHTML =  "";
+            }
+          
+          }
+      
+      
+      
+      
+</script>
+<body>
+    <header id="headerr">
+    <div id="flags">
+        <a id="link1"></a>
+        <a id="link2"></a>
+            </div>
+  </header>
+    
+    
+    
+    <div id="root">
+    </div> 
+       <div id="roo1">
+     </div>
+        
+    <div id="root1"></div> 
+    
+    <div id="toolbar">
+    
+    </div>
+     
+     <hr style="border: 1px solid red;">
+    
+   <br>
+    
+    <div id="secondTitle">
+        
+        </div>
+    <br>
+    <br>
+    <br>
+    
+    <div id="imgsmall">
+    
+    </div>
+    <div id="kopce">
+    </div>
+    
+    <div id="selekcija">
+    
+    </div>
+    
+    <table id="tabela">
+  <tr>
+    <th>Град</th>
+    <th>Автобуска Линија</th>
+    <th>Денови на Поаѓање </th>
+    <th>Време</th>
+   
+  </tr>
+  <tr>
+    <td id="demo"></td>
+    <td id="demo1"></td>
+     <td id="demo2"></td>
+    <td id="demo3"></td>
+  </tr>
+  <tr>
+   <td id="demo4"></td>
+    <td id="demo5"></td>
+     <td id="demo6"></td>
+    <td id="demo7"></td>
+  </tr>
+  <tr>
+    <td id="demo8"></td>
+    <td id="demo9"></td>
+     <td id="demo10"></td>
+    <td id="demo11"></td>
+  </tr>
+  <tr>
+     <td id="demo12"></td>
+    <td id="demo13"></td>
+     <td id="demo14"></td>
+    <td id="demo15"></td>
+  </tr>
+  </table>
+    
+    
+    
+    
+</body>
+</html>
