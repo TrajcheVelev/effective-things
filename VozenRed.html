@@ -181,7 +181,7 @@ tr:nth-child(even) {
            time: "09:00 – 09:45, 10:00 – 10:45, 14:00 - 14:45"
        };
         */
-        
+     /*   
         class CitySkopje {
             constructor(city,line,days,time){
                 this.cityName =city;
@@ -280,13 +280,86 @@ tr:nth-child(even) {
         
         
         
+        */
         
         
         
-        
-        
-        
-        
+        class City{
+            constructor(city,line,days,time){
+                
+                this.cityName =city;
+                this.cityLine= line;
+                this.cityDays = days;
+                this.cityTime = time;
+            }
+            
+}
+          
+         function clickFunction(){
+             
+             
+             document.getElementById('tabela').style.display = 'block';
+           var selectedvalue = document.getElementById("select").value;
+             
+            
+                let Skopje = new City("Skopje", "44,33,22,11","Monday,Tuesday,Friday","09:00-09:45,10:00-10:45")
+                let Strumica = new City("Strumica", "2, 6, 23","Wednesday,Saturday,Sunday","12:00-12:45,13:00-13:45")
+                let Bitola = new City("Bitola", "7,20,24,25","Wednesday,Friday,Sunday","12:00-12:45,13:00-13:45")
+                let Ohrid = new City("Ohrid", "7, 20","Monday,Friday","14:00-14:45,15:00-15:45") 
+             
+              if(selectedvalue == "skopje") {
+                document.getElementById("demo").innerHTML =   Skopje.cityName;
+                 document.getElementById("demo1").innerHTML =  Skopje.cityLine;
+                document.getElementById("demo2").innerHTML =  Skopje.cityDays;
+                 document.getElementById("demo3").innerHTML =  Skopje.cityTime;
+            } else{
+               document.getElementById("demo").innerHTML = "";
+                 document.getElementById("demo1").innerHTML =  "";
+                document.getElementById("demo2").innerHTML =  "";
+                 document.getElementById("demo3").innerHTML =  "";
+            }
+          
+          
+            if(selectedvalue == "strumica") {
+                document.getElementById("demo4").innerHTML =  Strumica.cityName;
+                 document.getElementById("demo5").innerHTML =  Strumica.cityLine;
+                document.getElementById("demo6").innerHTML =  Strumica.cityDays;
+                 document.getElementById("demo7").innerHTML =  Strumica.cityTime;
+            } else{
+                document.getElementById("demo4").innerHTML = "";
+                 document.getElementById("demo5").innerHTML =  "";
+                document.getElementById("demo6").innerHTML =  "";
+                 document.getElementById("demo7").innerHTML =  "";
+            } 
+          
+          
+           if(selectedvalue == "bitola") {
+                document.getElementById("demo8").innerHTML =  Bitola.cityName;
+                 document.getElementById("demo9").innerHTML =  Bitola.cityLine;
+                document.getElementById("demo10").innerHTML =  Bitola.cityDays;
+                 document.getElementById("demo11").innerHTML = Bitola.cityTime;
+            } else{
+               document.getElementById("demo8").innerHTML = "";
+                 document.getElementById("demo9").innerHTML =  "";
+                document.getElementById("demo10").innerHTML =  "";
+                 document.getElementById("demo11").innerHTML =  "";
+            }
+          
+           if(selectedvalue == "ohrid") {
+                document.getElementById("demo12").innerHTML =  Ohrid.cityName;
+                 document.getElementById("demo13").innerHTML =  Ohrid.cityLine;
+                document.getElementById("demo14").innerHTML =  Ohrid.cityDays;
+                 document.getElementById("demo15").innerHTML =  Ohrid.cityTime;
+            } else{
+               document.getElementById("demo12").innerHTML = "";
+                 document.getElementById("demo13").innerHTML =  "";
+                document.getElementById("demo14").innerHTML =  "";
+                 document.getElementById("demo15").innerHTML =  "";
+            }
+          
+          }
+             
+             
         
         
         /*
@@ -391,7 +464,7 @@ tr:nth-child(even) {
     <option value="bitola">Битола</option>
      <option value="ohrid">Охрид</option>
 </select>  
-            <button class="button" id="button" onclick="clickFunction()">Search</button>
+                <button class="button" id="button" onclick="clickFunction()">Search</button>
              
         </div>
          <br>
