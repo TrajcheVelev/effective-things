@@ -115,6 +115,7 @@ td {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
+    width:auto;
    
 }
        th{
@@ -126,12 +127,16 @@ td {
 tr:nth-child(even) {
   background-color: #dddddd;
 }   
-    
+    #inline{
+        display: flex;
+        margin-left:40%;
+    } 
     
 </style>
   
 
 <script type="text/babel">
+   document.getElementById('tabela').style.display = 'none'; 
 
 
 const myelement1 = <h1 id="title">Возен Ред</h1>;
@@ -166,19 +171,91 @@ ReactDOM.render(myImgBus, document.getElementById('imgsmall'));
 class MyForm extends React.Component {
   constructor(props) {
     super(props);
-    }
+    this.state =  {value:"Skopje"}
+    this.state1 = {value: "44,33,22,11"} 
+    this.state2 = {value: "Monday,Tuesday,Friday"}
+    this.state3 = {value: "09:00-09:45,10:00-10:45"}
+    this.state4 = {value: "Strumica"}
+    this.state5 = {value: "2, 6, 23"}
+    this.state6 = {value: "Wednesday,Saturday,Sunday"}
+    this.state7 = {value: "12:00-12:45,13:00-13:45"}
+    this.state8 = {value: "Bitola"}
+    this.state9 = {value: "7,20,24,25"}
+    this.state10 = {value: "Wednesday,Friday,Sunday"}
+    this.state11 = {value: "12:00-12:45,13:00-13:45"}
+    this.state12 = {value: "Ohrid"}
+    this.state13 = {value: "7, 20"}
+    this.state14 = {value: "Monday,Friday"}
+    this.state15 = {value: "14:00-14:45,15:00-15:45"}
+    
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+      
+  }
+
+  handleSubmit(event) {
+         event.preventDefault();
+      document.getElementById('tabela').style.display = 'block';
+      
+      
+      
+    if(this.state.value == "Skopje"){
+   ReactDOM.render(this.state.value, document.getElementById('demo')); 
+   ReactDOM.render(this.state1.value, document.getElementById('demo1')); 
+   ReactDOM.render(this.state2.value, document.getElementById('demo2')); 
+   ReactDOM.render(this.state3.value, document.getElementById('demo3'));       
+             
+      }    else if (this.state.value == "Strumica") {
+   ReactDOM.render(this.state4.value, document.getElementById('demo4')); 
+   ReactDOM.render(this.state5.value, document.getElementById('demo5')); 
+   ReactDOM.render(this.state6.value, document.getElementById('demo6')); 
+   ReactDOM.render(this.state7.value, document.getElementById('demo7'));   
+          }
+            else if(this.state.value == "Bitola") {
+   ReactDOM.render(this.state8.value, document.getElementById('demo8')); 
+   ReactDOM.render(this.state9.value, document.getElementById('demo9')); 
+   ReactDOM.render(this.state10.value, document.getElementById('demo10')); 
+   ReactDOM.render(this.state11.value, document.getElementById('demo11'));   
+                
+            }
+      
+      else if(this.state.value == "Ohrid") {
+   ReactDOM.render(this.state12.value, document.getElementById('demo12')); 
+   ReactDOM.render(this.state13.value, document.getElementById('demo13')); 
+   ReactDOM.render(this.state14.value, document.getElementById('demo14')); 
+   ReactDOM.render(this.state15.value, document.getElementById('demo15'));   
+                
+
+          }  else {
+              alert("Error");
+              
+          }
+    
+  }
+
+    
   render() {
     return (
-      <form>
- <select id="select">
-   <option disabled selected value>Pick a destination</option>
-     <option value="skopje">Скопје</option>             
-    <option value="strumica">Струмица</option>
-    <option value="bitola">Битола</option>
-     <option value="ohrid">Охрид</option>
-                </select>
+      <form onSubmit={this.handleSubmit}>
+  
+          <select value={this.state.value} id="select" onChange={this.handleChange}>
+           
+     <option disabled selected value>Pick a destination</option>
+     <option value="Skopje">Скопје</option>             
+    <option value="Strumica">Струмица</option>
+    <option value="Bitola">Битола</option>
+     <option value="Ohrid">Охрид</option>
+
+          </select>
+        
+        <input type="submit" value="Search" id="button" />
       </form>
-    );  
+    );
   }
 }
 
@@ -188,73 +265,9 @@ ReactDOM.render(<MyForm />, document.getElementById('selekcija'));
 const Button = <button class="button" id="button" onclick={clickFunction}>Search</button>
       ReactDOM.render(Button,document.getElementById("kopce"))
       
-       class City {
-            constructor(city,line,days,time){
-                
-                this.cityName =city;
-                this.cityLine= line;
-                this.cityDays = days;
-                this.cityTime = time;
-            }
-            
-}
-      
-      
-      function clickFunction(){
-             
-             
-             document.getElementById('tabela').style.display = 'block';
-          var selectedvalue = document.getElementById("select").value;
-    }
-
-                        
-
-                let Skopje = new City("Skopje", "44,33,22,11","Monday,Tuesday,Friday","09:00-09:45,10:00-10:45")
-                let Strumica = new City("Strumica", "2, 6, 23","Wednesday,Saturday,Sunday","12:00-12:45,13:00-13:45")
-                let Bitola = new City("Bitola", "7,20,24,25","Wednesday,Friday,Sunday","12:00-12:45,13:00-13:45")
-                let Ohrid = new City("Ohrid", "7, 20","Monday,Friday","14:00-14:45,15:00-15:45") 
-             
-              if(selectedvalue == "skopje") {
-              ReactDOM.render(Skopje.cityName, document.getElementById('demo'));
-              ReactDOM.render(Skopje.cityLine, document.getElementById('demo1'));
-              ReactDOM.render(Skopje.cityDays, document.getElementById('demo2'));
-              ReactDOM.render(Skopje.cityTime, document.getElementById('demo3'));
-            } else{
-                 alert("Error");
-            }
-          
-          
-            if(selectedvalue == "strumica") {
-               ReactDOM.render(Strumica.cityName, document.getElementById('demo4'));
-              ReactDOM.render(Strumica.cityLine, document.getElementById('demo5'));
-              ReactDOM.render(Strumica.cityDays, document.getElementById('demo6'));
-              ReactDOM.render(Strumica.cityTime, document.getElementById('demo7'));
-            } else{
-                   alert("Error");  
-            } 
-          
-          
-           if(selectedvalue == "bitola") {
-                ReactDOM.render(Bitola.cityName, document.getElementById('demo8'));
-              ReactDOM.render(Bitola.cityLine, document.getElementById('demo9'));
-              ReactDOM.render(Bitola.cityDays, document.getElementById('demo10'));
-              ReactDOM.render(Bitola.cityTime, document.getElementById('demo11'));
-            } else{
-                  alert("Error");
-            }
-          
-           if(selectedvalue == "ohrid") {
-                ReactDOM.render(Ohrid.cityName, document.getElementById('demo12'));
-              ReactDOM.render(Ohrid.cityLine, document.getElementById('demo13'));
-              ReactDOM.render(Ohrid.cityDays, document.getElementById('demo14'));
-              ReactDOM.render(Ohrid.cityTime, document.getElementById('demo15'));
-            } else{
-                    alert("Error");
-            }
-          
-          }
-      
-      
+   
+       
+    
       
       
 </script>
@@ -289,7 +302,7 @@ const Button = <button class="button" id="button" onclick={clickFunction}>Search
     <br>
     <br>
     <br>
-    
+    <div id="inline">
     <div id="imgsmall">
     
     </div>
@@ -299,7 +312,7 @@ const Button = <button class="button" id="button" onclick={clickFunction}>Search
     <div id="selekcija">
     
     </div>
-    
+    </div>
     <table id="tabela">
   <tr>
     <th>Град</th>
