@@ -1,0 +1,152 @@
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.container{
+  
+  width:100%;
+}
+
+.title{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+.picture{
+  width:15%;
+}
+.flags{
+  margin-left:95%;
+           width:3%;
+           
+  }
+
+  .headerr{
+    background-color: black;
+           height: 30px;
+  }
+.ull{
+  
+    font-size:21px;
+      text-align: center;
+}
+
+.li1, .li2, .li3, .li4{
+        
+  display:inline-block;
+     font-weight: bold;
+     padding: 0 40px 0 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.a1, .a2, .a3, .a4{
+   color:black; 
+text-decoration:none;
+cursor:pointer; 
+transition-duration: 0.4s;
+}
+
+.a1:hover{
+  color:burlywood;
+}
+.a2:hover{
+color:burlywood;
+}
+.a3:hover{
+color:burlywood;
+}
+.a4:hover{
+color:burlywood;
+}
+
+.second{
+  font-size: 15pt;
+    font-style: italic;
+           text-align: center;  
+}
+
+.input{
+  display: flex;
+  margin-left:40%;
+}
+
+.button{
+  background-color: gray;
+   border-radius: 4px;
+   color: white;
+   font-size: 1em;
+   height: 30px;
+   width: 96px;
+   margin: 10px;
+   border: 0px solid;
+   cursor:pointer;
+
+ transition-duration: 0.4s;
+  
+          
+}
+    .button:hover{
+          background-color: #422929;
+      }
+      body{
+        background-color: #cccccc;
+      }
+      .selected{
+      border: 1px solid;
+      border-radius: 2px;
+      padding: 6px;
+      font-size: 15px;
+      }
+
+      .tabela {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 72%;
+        float:right;
+        
+      }
+      
+      td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+         
+      }
+             th{
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        color:red;
+             }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+
+.formm{
+  margin-left:44%;
+}
+.tabela{
+  margin-right:10%;
+}
