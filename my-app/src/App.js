@@ -9,13 +9,13 @@ import LittleBus from "./32x32_1.gif"
 
 
 class App extends React.Component{
-    constructor(props,city,line,days,time){
-        super(props)
-         this.state={ 
-           cityName:city,
-           cityLine:line,
-           cityDays:days,
-           cityTime:time    
+    constructor(props){
+        super(props);
+         this.state={             
+           cityName:"",
+           cityLine:"",
+           cityDays:"",
+           cityTime:""   
            
       };
       
@@ -25,17 +25,38 @@ class App extends React.Component{
     }  
     
     handleChange(event) {
-      this.setState({value: event.target.value});
+      this.setState({value: event.target.value}); 
+
+ 
+      
       }
+
       handleSubmit(event) {
         event.preventDefault();
-        let Skopje = new App("", "Skopje", "44,33,22,11", "Monday,Thursday,Friday","09:00-09:45,10:00-10:45" )
-        let td
-        if(this.state.value =="skopje"){
-                td = <td>{Skopje.city}</td>
-        } else{
-                 alert("Error");
+  
+       if(this.state.value == "skopje" ){
+          this.setState({cityName: "Skopje", cityLine:"44,33,22,11", cityDays: "Monday,Thursday,Friday", cityTime: "09:00-09:45,10:00-10:45"});
+        } else {
+           
         }
+       if(this.state.value =="strumica"){
+        this.setState({cityName: "Strumica", cityLine:"2, 6, 23", cityDays: "Wednesday,Saturday,Sunday", cityTime: "12:00-12:45,13:00-13:45"});
+       } else {
+          
+       }
+         
+       if(this.state.value =="bitola"){
+        this.setState({cityName: "Bitola", cityLine:"7,20,24,25", cityDays: "Wednesday,Friday,Sunday", cityTime: "12:00-12:45,13:00-13:45"});
+       } else {
+         
+       }
+
+       if(this.state.value =="ohrid"){
+        this.setState({cityName: "Ohrid", cityLine:"7, 20", cityDays: "Monday,Friday", cityTime: "14:00-14:45,15:00-15:45"});
+       } else {
+
+       }
+
       }
       
 
@@ -78,7 +99,7 @@ class App extends React.Component{
         <form className="formm">
         <label>
         <img src={LittleBus} className="smallpicture"></img>
-          <select value={this.state.value} id="select" className="selected" onChange={this.handleChange}>
+    <select value={this.state.value} id="select" className="selected" onChange={this.handleChange}>
      <option disabled selected value>Pick a destination</option>
      <option value="skopje">Скопје</option>             
     <option value="strumica">Струмица</option>
@@ -98,29 +119,12 @@ class App extends React.Component{
    
   </tr>
   <tr>
-  <td id="demo"></td>
-    <td id="demo1"></td>
-     <td id="demo2"></td>
-    <td id="demo3"></td>
+  <td id="demo">{this.state.cityName}</td>    
+    <td id="demo1">{this.state.cityLine}</td>
+     <td id="demo2">{this.state.cityDays}</td>
+    <td id="demo3">{this.state.cityTime}</td>
   </tr>
-  <tr>
-   <td id="demo4"></td>
-    <td id="demo5"></td>
-     <td id="demo6"></td>
-    <td id="demo7"></td>
-  </tr>
-  <tr>
-    <td id="demo8"></td>
-    <td id="demo9"></td>
-     <td id="demo10"></td>
-    <td id="demo11"></td>
-  </tr>
-  <tr>
-     <td id="demo12"></td>
-    <td id="demo13"></td>
-     <td id="demo14"></td>
-    <td id="demo15"></td>
-  </tr>
+  
   </table>
 
 
