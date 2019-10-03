@@ -12,8 +12,8 @@ class Json extends React.Component{
         super(props);
          this.state={             
            
-          isLoaded: false,
-          items: [] 
+          isLoaded: false, 
+          items:[]
            
       };
       
@@ -27,44 +27,26 @@ class Json extends React.Component{
 }
 
 componentDidMount() {
-  fetch("https://effective-things/my-app/src/Data.json")
+  fetch('Data.json')
     .then(res => res.json())
     .then(json=> {
         this.setState({
           
          isLoaded:true,
-         items:json
+         items: json
         })
       })
+      .catch(error => {alert(error)})
+          
+    
 }
 
 
 
       handleSubmit(event) {
         event.preventDefault();
-  
-       if(this.state.value === "skopje" ){
-            
-        } else {
-           
-        }
-       if(this.state.value ==="strumica"){
         
-       } else {
-          
-       }
-         
-       if(this.state.value ==="bitola"){
-        
-       } else {
-         
-       }
 
-       if(this.state.value ==="ohrid"){
-       
-       } else {
-
-       }
 
       }
       
@@ -126,14 +108,28 @@ componentDidMount() {
     <th>Време</th>
    
   </tr>
-        <tr>
-            {items.map(item => (
-              <td key={item.cityID}>
-               Name: {item.cityName}
+       
+        {items.City.map(item => (
+          
+          <tr>
+            <td key={item.cityID}>
+              {item.cityName} 
               </td>
-            ))}
+              <td key={item.cityID}>
+              {item.CityLine}
+              </td>
+              <td key={item.cityID}>
+              {item.CityDays}
+              </td>
+              <td key={item.cityID}>
+              {item.CityTime}
+              </td>
+              
           </tr>
-</table>
+
+            ))}
+          
+  </table>
 
         </div>
           
