@@ -25,47 +25,66 @@ class Json extends React.Component{
     
     handleChange(event) {
       this.setState({value: event.target.value}); 
-}
-
-componentDidMount() {
-  fetch('Data.json')
-    .then(res => res.json())
-    .then(json=> {
-        this.setState({
-          
-         isLoaded:true,
-         items: json
-        
-        })
-      })
-    
-      .catch(error => {alert(error)})
-          
-    
-    }
-
-
-
-      handleSubmit(event) {
-   
-        event.preventDefault();
-       
-              
-}          
-
-filterr = () => {
-  var {City} = this.state;
-  if(this.state.value=="skopje"){
-  City.filter(element=> element.CityName.includes("Skopje")).map( (key,value) => {
-    return `CityName: ${key.CityName} 
-    CityLine: ${key.CityLine} 
-    CityDays: ${key.CityDays} 
-    CityTime: ${key.CityTime}`; });
-  } 
-  else {
-    alert("Error")
   }
+
+  componentDidMount() {
+    fetch('Data.json')
+      .then(res => res.json())
+      .then(json=> {
+          this.setState({
+            
+          isLoaded:true,
+          items: json
+          
+          })
+        })
+      
+        .catch(error => {alert(error)})
+            
+      
+      }
+
+
+
+        handleSubmit(event) {
+      var {City, items} = this.state;
+      
+          event.preventDefault();
+         for(var i=0; i<this.state.length; i++){
+           items = items[i]
+if(this.state.value === "skopje" && items[i] ==="Skopje"){
+  return items.City.map(item => 
+  <tr>
+  <td>{item.CityName} </td>
+  <td>{item.CityLine} </td>
+  <td>{item.CityDays} </td>
+  <td>{item.CityTime} </td>
+  </tr> )
+} else {
+  alert("Error")
 }
+       
+
+         }
+                
+  }          
+/*
+  filterr() {
+    var {City} = this.state;
+    if(this.state.value ==="skopje"){
+      City.filter(element=> element.CityName.includes("Skopje")).map( (key,value) => {
+        return <tr>
+          <td>CityName: ${key.CityName} </td>
+          <td>CityLine: ${key.CityLine} </td>
+          <td>CityDays ${key.CityDays} </td>
+          <td>CityTime ${key.CityTime} </td>
+        </tr>
+      })
+    }
+    else {
+      alert("Error")
+    }
+  }*/
 
       
 
@@ -132,7 +151,7 @@ filterr = () => {
   
        
        
-     {items.City.filter(filterr).map(item => (
+     {/* {items.City.filter(filterr).map(item => (
              
           <tr>
             
@@ -152,7 +171,7 @@ filterr = () => {
               
           </tr>
 
-            ))}
+            ))} */}
             
       
   </table>
