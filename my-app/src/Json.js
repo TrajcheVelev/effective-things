@@ -11,7 +11,7 @@ class Json extends React.Component{
     constructor(props){
         super(props);
          this.state={             
-           
+         
           isLoaded: false, 
           items:[]
            
@@ -19,6 +19,7 @@ class Json extends React.Component{
       
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
     
     }  
     
@@ -34,26 +35,45 @@ componentDidMount() {
           
          isLoaded:true,
          items: json
+        
         })
       })
+    
       .catch(error => {alert(error)})
           
     
-}
+    }
 
 
 
       handleSubmit(event) {
+   
         event.preventDefault();
-        
+       
+              
+}          
 
+filterr = () => {
+  var {City} = this.state;
+  if(this.state.value=="skopje"){
+  City.filter(element=> element.CityName.includes("Skopje")).map( (key,value) => {
+    return `CityName: ${key.CityName} 
+    CityLine: ${key.CityLine} 
+    CityDays: ${key.CityDays} 
+    CityTime: ${key.CityTime}`; });
+  } 
+  else {
+    alert("Error")
+  }
+}
 
-      }
       
 
     render() {
         
       var  { isLoaded, items } = this.state;
+
+    
       if (!isLoaded) {
         return <div>Loading</div>;
       } else {
@@ -108,12 +128,16 @@ componentDidMount() {
     <th>Време</th>
    
   </tr>
+
+  
        
-        {items.City.map(item => (
-          
+       
+     {items.City.filter(filterr).map(item => (
+             
           <tr>
+            
             <td key={item.cityID}>
-              {item.cityName} 
+              {item.CityName} 
               </td>
               <td key={item.cityID}>
               {item.CityLine}
@@ -124,11 +148,13 @@ componentDidMount() {
               <td key={item.cityID}>
               {item.CityTime}
               </td>
+             
               
           </tr>
 
             ))}
-          
+            
+      
   </table>
 
         </div>
