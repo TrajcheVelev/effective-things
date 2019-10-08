@@ -47,22 +47,23 @@ class Json extends React.Component{
 
 
         handleSubmit(event) {
-      var {City, items} = this.state;
+      let items =[] 
       
           event.preventDefault();
-         for(var i=0; i<this.state.length; i++){
+         for(var i=0;i<items.length;i++){
            items = items[i]
-if(this.state.value === "skopje" && items[i] ==="Skopje"){
-  return items.City.map(item => 
-  <tr>
-  <td>{item.CityName} </td>
-  <td>{item.CityLine} </td>
-  <td>{item.CityDays} </td>
-  <td>{item.CityTime} </td>
-  </tr> )
-} else {
-  alert("Error")
-}
+            if(this.state.value === "skopje" && items[i] ==="Skopje"){
+              return items.City.map(item => 
+          <tr>
+          <td>{item.CityName} </td>
+          <td>{item.CityLine} </td>
+          <td>{item.CityDays} </td>
+          <td>{item.CityTime} </td>
+          </tr> )
+}     
+         else {
+            alert("Error")
+              }
        
 
          }
