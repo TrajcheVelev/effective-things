@@ -11,7 +11,10 @@ class Json extends React.Component{
     constructor(props){
         super(props);
          this.state={             
-         
+          City:"",
+          Line:"",
+          Days:"",
+          Time:"",
           isLoaded: false, 
           items:[]
            
@@ -47,52 +50,42 @@ class Json extends React.Component{
 
 
         handleSubmit(event) {
-      let items =[] 
-      
-          event.preventDefault();
-         for(var i=0;i<items.length;i++){
-           items = items[i]
-            if(this.state.value === "skopje" && items[i] ==="Skopje"){
-              return items.City.map(item => 
+      event.preventDefault();
+       let CurrentValue = document.getElementById("select").value; console.log(CurrentValue)
+      if(CurrentValue)
+      {
+        console.log(this.state.items)
+      for(let i = 0; i<this.state.items.City.length; i++)
+      {
+       if(CurrentValue === this.state.items.City[i].CityName)
+       {/*
+         
+        this.setState({City:{CityName}, Line:{CityLine}, Days:{CityDays}, Time:{CityTime}})
+        return  (
           <tr>
-          <td>{item.CityName} </td>
-          <td>{item.CityLine} </td>
-          <td>{item.CityDays} </td>
-          <td>{item.CityTime} </td>
+          <td>{this.state.items.City[i].CityName} </td>
+          <td>{this.state.items.City[i].CityLine} </td>
+          <td>{this.state.items.City[i].CityDays} </td>
+          <td>{this.state.items.City[i].CityTime} </td>
           </tr> )
-}     
-         else {
-            alert("Error")
-              }
+          */
+          
+       }
+      }
+      }
        
 
          }
                 
-  }          
-/*
-  filterr() {
-    var {City} = this.state;
-    if(this.state.value ==="skopje"){
-      City.filter(element=> element.CityName.includes("Skopje")).map( (key,value) => {
-        return <tr>
-          <td>CityName: ${key.CityName} </td>
-          <td>CityLine: ${key.CityLine} </td>
-          <td>CityDays ${key.CityDays} </td>
-          <td>CityTime ${key.CityTime} </td>
-        </tr>
-      })
-    }
-    else {
-      alert("Error")
-    }
-  }*/
+            
+
 
       
 
     render() {
         
-      var  { isLoaded, items } = this.state;
-
+      var  { isLoaded } = this.state;
+      let i;
     
       if (!isLoaded) {
         return <div>Loading</div>;
@@ -118,7 +111,7 @@ class Json extends React.Component{
              </ul> 
              &nbsp;    
              <div>
-             <h3 class="second">Пребарување на возни линии кои тргнуваат од Скопје </h3>
+             <h3 className="second">Пребарување на возни линии кои тргнуваат од Скопје </h3>
              </div>
            
              
@@ -129,12 +122,12 @@ class Json extends React.Component{
         <form className="formm">
         <label>
         <img src={LittleBus} className="smallpicture"></img>
-    <select value={this.state.value} id="select" className="selected" onChange={this.handleChange}>
+    <select id="select" className="selected" onChange={this.handleChange}>
      <option disabled selected value>Pick a destination</option>
-     <option value="skopje">Скопје</option>             
-    <option value="strumica">Струмица</option>
-    <option value="bitola">Битола</option>
-     <option value="ohrid">Охрид</option>
+     <option value="Skopje">Скопје</option>             
+    <option value="Strumica">Струмица</option>
+    <option value="Bitola">Битола</option>
+     <option value="Ohrid">Охрид</option>
           </select>
         </label>
         <input type="button" className="button" value="Search" onClick={this.handleSubmit}/>
@@ -148,31 +141,15 @@ class Json extends React.Component{
     <th>Време</th>
    
   </tr>
-
   
-       
-       
-     {/* {items.City.filter(filterr).map(item => (
-             
-          <tr>
-            
-            <td key={item.cityID}>
-              {item.CityName} 
-              </td>
-              <td key={item.cityID}>
-              {item.CityLine}
-              </td>
-              <td key={item.cityID}>
-              {item.CityDays}
-              </td>
-              <td key={item.cityID}>
-              {item.CityTime}
-              </td>
-             
-              
-          </tr>
-
-            ))} */}
+  <tr>
+          <td>{this.state.items.City.CityName} </td>
+          <td>{this.state.items.City.CityLine} </td>
+          <td>{this.state.items.City.CityDays} </td>
+          <td>{this.state.items.City.CityTime} </td>
+          </tr> 
+    
+    
             
       
   </table>
