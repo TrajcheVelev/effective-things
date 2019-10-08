@@ -11,10 +11,6 @@ class Json extends React.Component{
     constructor(props){
         super(props);
          this.state={             
-          City:"",
-          Line:"",
-          Days:"",
-          Time:"",
           isLoaded: false, 
           items:[]
            
@@ -51,26 +47,71 @@ class Json extends React.Component{
 
         handleSubmit(event) {
       event.preventDefault();
-       let CurrentValue = document.getElementById("select").value; console.log(CurrentValue)
+
+       let CurrentValue = document.getElementById("select").value;
+
       if(CurrentValue)
       {
-        console.log(this.state.items)
-      for(let i = 0; i<this.state.items.City.length; i++)
+        for(let i = 0; i<this.state.items.City.length; i++)
+
       {
-       if(CurrentValue === this.state.items.City[i].CityName)
-       {/*
-         
-        this.setState({City:{CityName}, Line:{CityLine}, Days:{CityDays}, Time:{CityTime}})
-        return  (
-          <tr>
-          <td>{this.state.items.City[i].CityName} </td>
-          <td>{this.state.items.City[i].CityLine} </td>
-          <td>{this.state.items.City[i].CityDays} </td>
-          <td>{this.state.items.City[i].CityTime} </td>
-          </tr> )
-          */
-          
+            if(CurrentValue === this.state.items.City[i].CityName)
+
+       {
+            document.getElementById("Error").style.display="none";
+          this.setState ({ 
+          selectedCity:  this.state.items.City[i].CityName, 
+          selectedLine:  this.state.items.City[i].CityLine, 
+          selectedDays:  this.state.items.City[i].CityDays,
+          selectedTime:  this.state.items.City[i].CityTime 
+         });
+       
+      }
+      
+      else if(CurrentValue === this.state.items.City[i].CityName1)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items.City[i].CityName1 , 
+          selectedLine:  this.state.items.City[i].CityLine1, 
+          selectedDays:  this.state.items.City[i].CityDays1,
+          selectedTime:  this.state.items.City[i].CityTime1 
+        });
+       
+      }
+
+      else if(CurrentValue === this.state.items.City[i].CityName2)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity: this.state.items.City[i].CityName2 , 
+          selectedLine:  this.state.items.City[i].CityLine2, 
+          selectedDays:  this.state.items.City[i].CityDays2,
+          selectedTime:  this.state.items.City[i].CityTime2 
+        });
+       
+      }
+
+      else if(CurrentValue === this.state.items.City[i].CityName3)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items.City[i].CityName3, 
+          selectedLine:  this.state.items.City[i].CityLine3, 
+          selectedDays:  this.state.items.City[i].CityDays3,
+          selectedTime:  this.state.items.City[i].CityTime3
+        });
+       
        }
+      
+      else {
+        
+          document.getElementById("Error").innerHTML = "Error"
+
+      }
+
+      
+
       }
       }
        
@@ -78,11 +119,8 @@ class Json extends React.Component{
          }
                 
             
-
-
-      
-
-    render() {
+     
+      render() {
         
       var  { isLoaded } = this.state;
       let i;
@@ -134,31 +172,30 @@ class Json extends React.Component{
       </form>
     
       <table className="tabela">
+
   <tr>
     <th>Град</th>
     <th>Автобуска Линија</th>
     <th>Денови на Поаѓање </th>
     <th>Време</th>
-   
   </tr>
   
   <tr>
-          <td>{this.state.items.City.CityName} </td>
-          <td>{this.state.items.City.CityLine} </td>
-          <td>{this.state.items.City.CityDays} </td>
-          <td>{this.state.items.City.CityTime} </td>
-          </tr> 
+          <td>{this.state.selectedCity} </td>
+          <td>{this.state.selectedLine} </td>
+          <td>{this.state.selectedDays} </td>
+          <td>{this.state.selectedTime} </td>
+ </tr> 
     
-    
-            
-      
-  </table>
+ </table>
+
+<h1 id="Error"></h1>
 
         </div>
           
 
-          
         );
+
       }
 
 
