@@ -20,7 +20,8 @@ class Json extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.UpdateData = this.UpdateData.bind(this);
     this.DeleteData = this.DeleteData.bind(this);
-    
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
     }  
     
     handleChange(event) {
@@ -48,8 +49,9 @@ class Json extends React.Component{
 
         handleSubmit(event) {
       event.preventDefault();
+      let button = document.getElementById("button3");
+      let CurrentValue = document.getElementById("select").value;
 
-       let CurrentValue = document.getElementById("select").value;
 
       if(CurrentValue)
       {
@@ -86,7 +88,7 @@ class Json extends React.Component{
        {
         document.getElementById("Error").style.display="none";
         this.setState({ 
-          selectedCity: this.state.items.City[i].CityName2, 
+          selectedCity:  this.state.items.City[i].CityName2, 
           selectedLine:  this.state.items.City[i].CityLine2, 
           selectedDays:  this.state.items.City[i].CityDays2,
           selectedTime:  this.state.items.City[i].CityTime2 
@@ -125,7 +127,9 @@ class Json extends React.Component{
         let TextValue1 = document.getElementById("TxtValue1").value;
         let TextValue2 = document.getElementById("TxtValue2").value;
         let TextValue3 = document.getElementById("TxtValue3").value;
-      let i;
+        let i;
+
+        
 
           if(TextValue != "") {
             console.log(this.state.items)
@@ -176,10 +180,64 @@ class Json extends React.Component{
                     
                 }
                
+}
 
+displayForm(){
+  let TextValue  = document.getElementById("TxtValue") .value;
+  let TextValue1 = document.getElementById("TxtValue1").value;
+  let TextValue2 = document.getElementById("TxtValue2").value;
+  let TextValue3 = document.getElementById("TxtValue3").value;
+  let i;
 
+    if(TextValue != "") {
+      
+     for(let i=0;i<this.state.items.City.length;i++){
+      this.state.items.City[i].CityName = TextValue;
+     }
+    
+    }
+     if(TextValue1 != ""){
+
+      for(let i=0;i<this.state.items.City.length;i++){
+        this.state.items.City[i].CityLine = TextValue1;
+       }
+    }
+
+     if(TextValue2 != ""){
+      
+      for(let i=0;i<this.state.items.City.length;i++){
+        this.state.items.City[i].CityDays = TextValue2;
+       }
+    }
+
+     if(TextValue3 != ""){
+
+      for(let i=0;i<this.state.items.City.length;i++){
+        this.state.items.City[i].CityTime = TextValue3;
+       }
+    }
+        else{
+        
         }
-     
+  } 
+
+
+open(){
+  let modal = document.getElementById("myModal");
+  modal.style.display="block";
+  }
+  close(){
+   
+    let modal = document.getElementById("myModal");
+    modal.style.display="none"  
+  }
+
+    close1(){
+  let TextValue  = document.getElementById("TxtValue") .value="";
+  let TextValue1 = document.getElementById("TxtValue1").value="";
+  let TextValue2 = document.getElementById("TxtValue2").value="";
+  let TextValue3 = document.getElementById("TxtValue3").value="";
+    } 
             
      
       render() {
@@ -207,8 +265,8 @@ class Json extends React.Component{
           <ul className="ull">
          <li className="li1"> <a href="#" className="a1">Почетна</a></li>
          <li className="li2"> <a href="#" className="a2">За нас</a> </li>
-          <li className="li3"> <a href="#" className="a3">Автобуски Станици</a> </li>
-          <li className="li4"> <a href="#" className="a4">Возен ред</a> </li>
+         <li className="li3"> <a href="#" className="a3">Автобуски Станици</a> </li>
+         <li className="li4"> <a href="#" className="a4">Возен ред</a> </li>
              </ul> 
              &nbsp;    
              <div>
@@ -232,6 +290,10 @@ class Json extends React.Component{
           </select>
         </label>
         <input type="button" className="button" value="Search" onClick={this.handleSubmit}/>
+        <input type="button" className="myBtn" value="Edit" onClick={this.open}/>
+       
+        
+        
       </form>
     
       <table className="tabela">
@@ -255,21 +317,47 @@ class Json extends React.Component{
  </table>
  
 <h1 id="Error"></h1>
+
 &nbsp;
 
-<div className="div-align">
-<h2 className="naslov">Options</h2>
-City Name: <input type="text" id="TxtValue"></input>
-City Line: <input type="text" id="TxtValue1"></input>
-City Days: <input type="text" id="TxtValue2"></input>
-City Time: <input type="text" id="TxtValue3"></input>
 
-<button className="button1" onClick={this.UpdateData} >Save</button>
-<button className="button2" onClick={this.DeleteData}>Delete</button>
-          </div>
+
+
+  <div id="myModal" className="modal">
+
+<div className="modal-content">
+  <span className="close">&times;</span>
+  
+</div>
+
+<div className="modal-content">
+  <div className="modal-header">
+    <span className="close" onClick={this.close}>&times;</span>
+    <h2>Edit</h2>
+  </div>
+
+  <div className="modal-body">
+City Name: <input type="text" id="TxtValue"></input><br/>
+City Line: &nbsp; <input type="text" id="TxtValue1"></input><br/>
+City Days: <input type="text" id="TxtValue2"></input><br/>
+City Time: <input type="text" id="TxtValue3"></input><br/>
+  </div>
+
+  <div className="modal-footer">
+    
+  <button className="button1" onClick={this.UpdateData} >Save</button>
+  <button className="button3" onClick={this.close1}>Delete</button>
+
+  </div>
+
+</div>
+
+</div>
 
         </div>
-          
+      
+      
+
 
         );
 
