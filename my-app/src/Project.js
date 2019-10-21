@@ -1,110 +1,157 @@
 import React from 'react';
-import Bus from "./logo_bemidjibus.png"
-import LittleBus from "./32x32_1.gif"
+import Bus from "./logo_bemidjibus.png";
+import LittleBus from "./32x32_1.gif";
 import './App.css';
-import BusStation from "./BusStation.jpg"
-import Facebook from "./icons8-facebook-64.png"
-import Instagram from "./icons8-instagram-64.png"
+import BusStation from "./BusStation.jpg";
+import Facebook from "./icons8-facebook-64.png";
+import Instagram from "./icons8-instagram-64.png";
+import firebase from "firebase";
+import firestore from "firestore";
 
 
 
-class Json extends React.Component{
+
+class Project extends React.Component{
+  
     constructor(props){
+    
+      
         super(props);
+        
          this.state={             
           isLoaded: false, 
-          items:[]
+          items:""
            
       };
-      
+     
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.UpdateData = this.UpdateData.bind(this);
+   // this.UpdateData = this.UpdateData.bind(this);
     this.DeleteData = this.DeleteData.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+  
     }  
     
     handleChange(event) {
       this.setState({value: event.target.value}); 
   }
 
-  componentDidMount() {
-    fetch('Data.json')
-      .then(res => res.json())
-      .then(json=> {
-          this.setState({
-            
-          isLoaded:true,
-          items: json
-          
-          })
-        })
-      
-        .catch(error => {alert(error)})
-            
-      
-      }
+  componentDidMount(){
+
+    const  config = {
+      apiKey: "AIzaSyDKbhgZS63rJNHjsGh2L1SzbDITShP4FMY",
+      authDomain: "project-busline.firebaseapp.com",
+      databaseURL: "https://project-busline.firebaseio.com",
+      projectId: "project-busline",
+      storageBucket: "project-busline.appspot.com",
+      messagingSenderId: "65583259218",
+      appId: "1:65583259218:web:37712df044986298b1098b",
+      measurementId: "G-V24XMS3NFH"
+    };
+
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+    
+
+  const CityRef = db.collection("buslines");
+  this.setState ({
+    isLoaded:true,
+    items: CityRef
+  })
+  
+  };
 
 
 
-        handleSubmit(event) {
+      handleSubmit(event) {
       event.preventDefault();
-      let button = document.getElementById("button");
+      
       let CurrentValue = document.getElementById("select").value;
+      
 
-
-      if(CurrentValue)
-      {
-        console.log(this.state.items)
-        for(let i = 0; i<this.state.items.City.length; i++)
-                   
-      {
-            if(CurrentValue === this.state.items.City[i].CityName)
+     
+    if(CurrentValue === this.state.items.CityName)
 
        {
             document.getElementById("Error").style.display="none";
           this.setState ({ 
-          selectedCity:  this.state.items.City[i].CityName, 
-          selectedLine:  this.state.items.City[i].CityLine, 
-          selectedDays:  this.state.items.City[i].CityDays,
-          selectedTime:  this.state.items.City[i].CityTime 
+          selectedCity:  this.state.items.CityName, 
+          selectedLine:  this.state.items.CityLine, 
+          selectedDays:  this.state.items.CityDays,
+          selectedTime:  this.state.items.CityTime 
          });
        
       }
       
-      else if(CurrentValue === this.state.items.City[i].CityName1)
+      else if(CurrentValue === this.state.items.CityName1)
        {
         document.getElementById("Error").style.display="none";
         this.setState({ 
-          selectedCity:  this.state.items.City[i].CityName1, 
-          selectedLine:  this.state.items.City[i].CityLine1, 
-          selectedDays:  this.state.items.City[i].CityDays1,
-          selectedTime:  this.state.items.City[i].CityTime1 
+          selectedCity:  this.state.items.CityName1, 
+          selectedLine:  this.state.items.CityLine1, 
+          selectedDays:  this.state.items.CityDays1,
+          selectedTime:  this.state.items.CityTime1 
         });
        
       }
 
-      else if(CurrentValue === this.state.items.City[i].CityName2)
+      else if(CurrentValue === this.state.items.CityName2)
        {
         document.getElementById("Error").style.display="none";
         this.setState({ 
-          selectedCity:  this.state.items.City[i].CityName2, 
-          selectedLine:  this.state.items.City[i].CityLine2, 
-          selectedDays:  this.state.items.City[i].CityDays2,
-          selectedTime:  this.state.items.City[i].CityTime2 
+          selectedCity:  this.state.items.CityName2, 
+          selectedLine:  this.state.items.CityLine2, 
+          selectedDays:  this.state.items.CityDays2,
+          selectedTime:  this.state.items.CityTime2 
         });
        
       }
 
-      else if(CurrentValue === this.state.items.City[i].CityName3)
+      else if(CurrentValue === this.state.items.CityName3)
        {
         document.getElementById("Error").style.display="none";
         this.setState({ 
-          selectedCity:  this.state.items.City[i].CityName3, 
-          selectedLine:  this.state.items.City[i].CityLine3, 
-          selectedDays:  this.state.items.City[i].CityDays3,
-          selectedTime:  this.state.items.City[i].CityTime3
+          selectedCity:  this.state.items.CityName3, 
+          selectedLine:  this.state.items.CityLine3, 
+          selectedDays:  this.state.items.CityDays3,
+          selectedTime:  this.state.items.CityTime3 
+        });
+       
+       }
+
+       else if(CurrentValue === this.state.items.CityName4)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items.CityName4, 
+          selectedLine:  this.state.items.CityLine4, 
+          selectedDays:  this.state.items.CityDays4,
+          selectedTime:  this.state.items.CityTime4 
+        });
+       
+       }
+
+       else if(CurrentValue === this.state.items.CityName5)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items.CityName5, 
+          selectedLine:  this.state.items.CityLine5, 
+          selectedDays:  this.state.items.CityDays5,
+          selectedTime:  this.state.items.CityTime5 
+        });
+       
+       }
+
+       else if(CurrentValue === this.state.items.CityName6)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items.CityName6, 
+          selectedLine:  this.state.items.CityLine6, 
+          selectedDays:  this.state.items.CityDays6,
+          selectedTime:  this.state.items.CityTime6 
         });
        
        }
@@ -117,12 +164,12 @@ class Json extends React.Component{
 
       
 
-      }
-          }
+      
+          
               }
 
 
-
+/*
      UpdateData() {
         let TextValue4  = document.getElementById("TxtValue").value;
         let TextValue1 = document.getElementById("TxtValue1").value;
@@ -133,7 +180,7 @@ class Json extends React.Component{
         
 
           if(TextValue4 != "") {
-            console.log(this.state.items)
+          
            for(let i=0;i<this.state.items.City.length;i++){
             this.state.items.City[i].CityName = TextValue4;
            }
@@ -162,8 +209,9 @@ class Json extends React.Component{
               else{
               
               }
+              
         } 
-
+*/
 
         DeleteData(){
                 let OptionValue = document.getElementById("select").value;
@@ -196,7 +244,7 @@ open(){
   }
 
     close1(){
-  let TextValue = document.getElementById("TxtValue").value="";
+  let TextValue =  document.getElementById("TxtValue").value="";
   let TextValue1 = document.getElementById("TxtValue1").value="";
   let TextValue2 = document.getElementById("TxtValue2").value="";
   let TextValue3 = document.getElementById("TxtValue3").value="";
@@ -217,18 +265,19 @@ open(){
         return (
           <div className="container">
            
+           <div class="w3-content w3-display-container">
+           <img src={BusStation} className="Bus"></img>
+</div>
        
-              
-           <div>
-         <img src={BusStation} className="Bus"></img>
-         
+              <div>
+        
          </div>
           
 
          <br/>
 
         
-          <ul className="ull">
+<ul className="ull">
          <li className="li1"> <a href="#" className="a1">Почетна</a></li>
          <li className="li2"> <a href="#" className="a2">За нас</a> </li>
          <li className="li3"> <a href="#" className="a3">Автобуски Станици</a> </li>
@@ -237,18 +286,14 @@ open(){
          <input type="text" placeholder="Search.." className="searchbar"> 
           </input>
          
-             </ul> 
+                      </ul> 
              
              
-    
-   
-              
-<hr className="HR"></hr>
+      <hr className="HR"></hr>
+
              <div>
              <h3 className="second">Пребарување на возни линии кои тргнуваат од Скопје </h3>
              </div>
-           
-            
              &nbsp;
       
         <form className="formm">
@@ -260,6 +305,9 @@ open(){
     <option value="Strumica">Струмица</option>
     <option value="Bitola">Битола</option>
      <option value="Ohrid">Охрид</option>
+     <option value="Prilep">Прилеп</option>
+     <option value="Gevgelija">Гевгелија</option>
+     <option value="Berovo">Берово</option>
           </select>
         </label>
         <input type="button" className="button" id="button" value="Search" onClick={this.handleSubmit}/>
@@ -322,8 +370,7 @@ open(){
     </select>
     <br/>
 Дестинација : <select id="TxtValue3" className="modal-select2" required>
-    <option disabled selected value>Одберете дестинација</option>
-    <option value="Sk">Скопје</option>             
+    <option disabled selected value>Одберете дестинација</option>       
     <option value="Sr">Струмица</option>
     <option value="Bt">Битола</option>
     <option value="Oh">Охрид</option>
@@ -386,17 +433,22 @@ open(){
  <h3>Vozen<span>Red</span></h3>
 
  <p class="footer-links">
- <a href="#">Home</a>
-·
- <a href="#">Blog</a>
-·
- <a href="#">Pricing</a>
-·
- <a href="#">About</a>
-·
- <a href="#">Faq</a>
-·
- <a href="#">Contact</a>
+ ·<a href="#">Home</a>
+
+<br/>
+·<a href="#">Blog</a>
+
+<br/>
+·<a href="#">Pricing</a>
+
+<br/>
+·<a href="#">About</a>
+
+<br/>
+·<a href="#">Faq</a>
+
+<br/>
+·<a href="#">Contact</a>
  </p>
 
  <p class="footer-company-name">VozenRed &copy; 2019</p>
@@ -446,26 +498,19 @@ Vozen Red helps people to see each cities bus lines that go from Skopje (CityLin
  </footer>
 
 
-
-
-        </div>
+  </div>
       
-      
-
-
         );
 
-      }
+     }
 
     
-     
-}
+     }
     
     
 }
+
+
    
 
-
-
-
-export default Json;
+export default Project;
