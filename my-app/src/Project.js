@@ -6,7 +6,6 @@ import BusStation from "./BusStation.jpg";
 import Facebook from "./icons8-facebook-64.png";
 import Instagram from "./icons8-instagram-64.png";
 import firebase from "firebase";
-import firestore from "firestore";
 
 
 
@@ -20,7 +19,7 @@ class Project extends React.Component{
         
          this.state={             
           isLoaded: false, 
-          items:""
+        
            
       };
      
@@ -38,7 +37,6 @@ class Project extends React.Component{
   }
 
   componentDidMount(){
-
     const  config = {
       apiKey: "AIzaSyDKbhgZS63rJNHjsGh2L1SzbDITShP4FMY",
       authDomain: "project-busline.firebaseapp.com",
@@ -49,125 +47,159 @@ class Project extends React.Component{
       appId: "1:65583259218:web:37712df044986298b1098b",
       measurementId: "G-V24XMS3NFH"
     };
+    
 
     firebase.initializeApp(config);
     const db = firebase.firestore();
-    
+    const CityRef =  db.collection("buslines").doc("Skopje");
+    const CityRef1 = db.collection("buslines").doc("Strumica");
+    const CityRef2 = db.collection("buslines").doc("Bitola");
+    const CityRef3 = db.collection("buslines").doc("Ohrid");
+    const CityRef4 = db.collection("buslines").doc("Prilep");
+    const CityRef5 = db.collection("buslines").doc("Gevgelija");
+    const CityRef6 = db.collection("buslines").doc("Berovo");
 
-  const CityRef = db.collection("buslines");
-  this.setState ({
-    isLoaded:true,
-    items: CityRef
-  })
+
+     this.setState ({
+                  isLoaded:true,
+                  items: CityRef,
+                  items1:CityRef1,
+                  items2:CityRef2,
+                  items3:CityRef3,
+                  items4:CityRef4,
+                  items5:CityRef5,
+                  items6:CityRef6
+                               })
   
-  };
+                               };
 
 
-
+                  
       handleSubmit(event) {
+
       event.preventDefault();
       
-      let CurrentValue = document.getElementById("select").value;
-      
+     let db = firebase.firestore();
+     let CityRef =  db.collection("buslines").doc("Skopje");
+     let CityRef1 =  db.collection("buslines").doc("Strumica");
+     let CityRef2 = db.collection("buslines").doc("Bitola");
+     let CityRef3 = db.collection("buslines").doc("Ohrid");
+     let CityRef4 = db.collection("buslines").doc("Prilep");
+     let CityRef5 = db.collection("buslines").doc("Gevgelija");
+     let CityRef6 = db.collection("buslines").doc("Berovo");
+     let CurrentValue = document.getElementById("select").value;
+    
 
-     
-    if(CurrentValue === this.state.items.CityName)
-
-       {
-            document.getElementById("Error").style.display="none";
-          this.setState ({ 
-          selectedCity:  this.state.items.CityName, 
-          selectedLine:  this.state.items.CityLine, 
-          selectedDays:  this.state.items.CityDays,
-          selectedTime:  this.state.items.CityTime 
-         });
-       
-      }
-      
-      else if(CurrentValue === this.state.items.CityName1)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName1, 
-          selectedLine:  this.state.items.CityLine1, 
-          selectedDays:  this.state.items.CityDays1,
-          selectedTime:  this.state.items.CityTime1 
-        });
-       
-      }
-
-      else if(CurrentValue === this.state.items.CityName2)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName2, 
-          selectedLine:  this.state.items.CityLine2, 
-          selectedDays:  this.state.items.CityDays2,
-          selectedTime:  this.state.items.CityTime2 
-        });
-       
-      }
-
-      else if(CurrentValue === this.state.items.CityName3)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName3, 
-          selectedLine:  this.state.items.CityLine3, 
-          selectedDays:  this.state.items.CityDays3,
-          selectedTime:  this.state.items.CityTime3 
-        });
-       
-       }
-
-       else if(CurrentValue === this.state.items.CityName4)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName4, 
-          selectedLine:  this.state.items.CityLine4, 
-          selectedDays:  this.state.items.CityDays4,
-          selectedTime:  this.state.items.CityTime4 
-        });
-       
-       }
-
-       else if(CurrentValue === this.state.items.CityName5)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName5, 
-          selectedLine:  this.state.items.CityLine5, 
-          selectedDays:  this.state.items.CityDays5,
-          selectedTime:  this.state.items.CityTime5 
-        });
-       
-       }
-
-       else if(CurrentValue === this.state.items.CityName6)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items.CityName6, 
-          selectedLine:  this.state.items.CityLine6, 
-          selectedDays:  this.state.items.CityDays6,
-          selectedTime:  this.state.items.CityTime6 
-        });
-       
-       }
-      
-      else {
-        
+      if(CurrentValue==="Skopje"){
+      CityRef.get().then(function(doc) {
+        if (doc.exists) {
+          document.getElementById("Error").style.display="none";
+            console.log( doc.data());
+        } else {
+           
           document.getElementById("Error").innerHTML = "Error"
+        }
+    })
 
+  }
+
+  if(CurrentValue==="Strumica"){
+    CityRef1.get().then(function(doc) {
+      if (doc.exists) {
+        for(let i=0;i<doc.data.length;i++){}
+        document.getElementById("Error").style.display="none";
+          console.log( doc.data());
+      } else {
+
+        document.getElementById("Error").innerHTML = "Error"
       }
+  })
 
-      
+}
 
+
+if(CurrentValue==="Bitola"){
+  CityRef2.get().then(function(doc) {
+    if (doc.exists) {
+      document.getElementById("Error").style.display="none";
+        console.log(doc.data());
+    } else {
+        
+      document.getElementById("Error").innerHTML = "Error"
+    }
+})
+
+}
+
+if(CurrentValue==="Ohrid"){
+  CityRef3.get().then(function(doc) {
+    if (doc.exists) {
+      document.getElementById("Error").style.display="none";
+        console.log(doc.data());
+    } else {
+        
+      document.getElementById("Error").innerHTML = "Error"
+    }
+})
+
+}
+
+if(CurrentValue==="Prilep"){
+  CityRef4.get().then(function(doc) {
+    if (doc.exists) {
+      document.getElementById("Error").style.display="none";
+        console.log(doc.data());
+    } else {
+        
+      document.getElementById("Error").innerHTML = "Error"
+    }
+})
+
+}
+
+if(CurrentValue==="Gevgelija"){
+  CityRef5.get().then(function(doc) {
+    if (doc.exists) {
+      document.getElementById("Error").style.display="none";
+        console.log(doc.data());
+    } else {
+        
+      document.getElementById("Error").innerHTML = "Error"
+    }
+})
+
+}
+
+if(CurrentValue==="Berovo"){
+  CityRef6.get().then(function(doc) {
+    if (doc.exists) {
+      document.getElementById("Error").style.display="none";
+        console.log(doc.data());
+    } else {
+        
+      document.getElementById("Error").innerHTML = "Error"
+    }
+})
+
+}
+    
+     /* 
+      else if(CurrentValue === this.state.items1.CityName1)
+       {
+        document.getElementById("Error").style.display="none";
+        this.setState({ 
+          selectedCity:  this.state.items1.Strumica.CityName1, 
+          selectedLine:  this.state.items1.Strumica.CityLine1, 
+          selectedDays:  this.state.items1.Strumica.CityDays1,
+          selectedTime:  this.state.items1.Strumica.CityTime1  
+        });
+       
+      }
+*/
       
           
-              }
-
+              
+            }
 
 /*
      UpdateData() {
@@ -244,12 +276,12 @@ open(){
   }
 
     close1(){
-  let TextValue =  document.getElementById("TxtValue").value="";
-  let TextValue1 = document.getElementById("TxtValue1").value="";
-  let TextValue2 = document.getElementById("TxtValue2").value="";
-  let TextValue3 = document.getElementById("TxtValue3").value="";
-  let TextValue5 = document.getElementById("TxtValue5").value="";
-  let TextValue6 = document.getElementById("TxtValue6").value="";
+   document.getElementById("TxtValue").value="";
+   document.getElementById("TxtValue1").value="";
+  document.getElementById("TxtValue2").value="";
+   document.getElementById("TxtValue3").value="";
+   document.getElementById("TxtValue5").value="";
+  document.getElementById("TxtValue6").value="";
     } 
             
      
