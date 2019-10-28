@@ -15,17 +15,20 @@ class Project extends React.Component{
     constructor(props){
     
       
-        super(props);
+      super(props);
         
          this.state={             
           isLoaded: false, 
-        
+          selectedCity: "",
+          selectedDays: "",
+          selectedLine: "",
+          selectedTime: ""
            
       };
      
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-   // this.UpdateData = this.UpdateData.bind(this);
+    this.saveData = this.saveData.bind(this);
     this.DeleteData = this.DeleteData.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -88,14 +91,18 @@ class Project extends React.Component{
      let CityRef5 = db.collection("buslines").doc("Gevgelija");
      let CityRef6 = db.collection("buslines").doc("Berovo");
      let CurrentValue = document.getElementById("select").value;
-    
 
-      if(CurrentValue==="Skopje"){
+    
+      if(CurrentValue==="Skopje"){  
       CityRef.get().then(function(doc) {
         if (doc.exists) {
-          document.getElementById("Error").style.display="none";
-            console.log( doc.data());
-        } else {
+       document.getElementById("Error").style.display="none";
+       document.getElementById("table-display1").innerHTML = doc.data().CityName;
+       document.getElementById("table-display2").innerHTML = doc.data().CityLine;
+       document.getElementById("table-display3").innerHTML = doc.data().CityDays;
+       document.getElementById("table-display4").innerHTML = doc.data().CityTime;
+         
+      } else {
            
           document.getElementById("Error").innerHTML = "Error"
         }
@@ -106,9 +113,12 @@ class Project extends React.Component{
   if(CurrentValue==="Strumica"){
     CityRef1.get().then(function(doc) {
       if (doc.exists) {
-        for(let i=0;i<doc.data.length;i++){}
+
         document.getElementById("Error").style.display="none";
-          console.log( doc.data());
+        document.getElementById("table-display1").innerHTML = doc.data().CityName1;
+        document.getElementById("table-display2").innerHTML = doc.data().CityLine1;
+        document.getElementById("table-display3").innerHTML = doc.data().CityDays1;
+        document.getElementById("table-display4").innerHTML = doc.data().CityTime1;
       } else {
 
         document.getElementById("Error").innerHTML = "Error"
@@ -122,7 +132,10 @@ if(CurrentValue==="Bitola"){
   CityRef2.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
-        console.log(doc.data());
+      document.getElementById("table-display1").innerHTML = doc.data().CityName2;
+      document.getElementById("table-display2").innerHTML = doc.data().CityLine2;
+      document.getElementById("table-display3").innerHTML = doc.data().CityDays2;
+      document.getElementById("table-display4").innerHTML = doc.data().CityTime2;
     } else {
         
       document.getElementById("Error").innerHTML = "Error"
@@ -135,7 +148,10 @@ if(CurrentValue==="Ohrid"){
   CityRef3.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
-        console.log(doc.data());
+      document.getElementById("table-display1").innerHTML = doc.data().CityName3;
+      document.getElementById("table-display2").innerHTML = doc.data().CityLine3;
+      document.getElementById("table-display3").innerHTML = doc.data().CityDays3;
+      document.getElementById("table-display4").innerHTML = doc.data().CityTime3;
     } else {
         
       document.getElementById("Error").innerHTML = "Error"
@@ -148,7 +164,10 @@ if(CurrentValue==="Prilep"){
   CityRef4.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
-        console.log(doc.data());
+      document.getElementById("table-display1").innerHTML = doc.data().CityName4;
+      document.getElementById("table-display2").innerHTML = doc.data().CityLine4;
+      document.getElementById("table-display3").innerHTML = doc.data().CityDays4;
+      document.getElementById("table-display4").innerHTML = doc.data().CityTime4;
     } else {
         
       document.getElementById("Error").innerHTML = "Error"
@@ -161,7 +180,10 @@ if(CurrentValue==="Gevgelija"){
   CityRef5.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
-        console.log(doc.data());
+       document.getElementById("table-display1").innerHTML = doc.data().CityName5;
+       document.getElementById("table-display2").innerHTML = doc.data().CityLine5;
+       document.getElementById("table-display3").innerHTML = doc.data().CityDays5;
+       document.getElementById("table-display4").innerHTML = doc.data().CityTime5;
     } else {
         
       document.getElementById("Error").innerHTML = "Error"
@@ -174,7 +196,10 @@ if(CurrentValue==="Berovo"){
   CityRef6.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
-        console.log(doc.data());
+      document.getElementById("table-display1").innerHTML = doc.data().CityName6;
+      document.getElementById("table-display2").innerHTML = doc.data().CityLine6;
+      document.getElementById("table-display3").innerHTML = doc.data().CityDays6;
+      document.getElementById("table-display4").innerHTML = doc.data().CityTime6;
     } else {
         
       document.getElementById("Error").innerHTML = "Error"
@@ -182,73 +207,16 @@ if(CurrentValue==="Berovo"){
 })
 
 }
+  
+      
+  }
+
+
+   DeleteData(){
     
-     /* 
-      else if(CurrentValue === this.state.items1.CityName1)
-       {
-        document.getElementById("Error").style.display="none";
-        this.setState({ 
-          selectedCity:  this.state.items1.Strumica.CityName1, 
-          selectedLine:  this.state.items1.Strumica.CityLine1, 
-          selectedDays:  this.state.items1.Strumica.CityDays1,
-          selectedTime:  this.state.items1.Strumica.CityTime1  
-        });
-       
-      }
-*/
-      
-          
-              
-            }
-
-/*
-     UpdateData() {
-        let TextValue4  = document.getElementById("TxtValue").value;
-        let TextValue1 = document.getElementById("TxtValue1").value;
-        let TextValue2 = document.getElementById("TxtValue2").value;
-        let TextValue3 = document.getElementById("TxtValue3").value;
-        let i;
-
-        
-
-          if(TextValue4 != "") {
-          
-           for(let i=0;i<this.state.items.City.length;i++){
-            this.state.items.City[i].CityName = TextValue4;
-           }
-          
-          }
-           if(TextValue1 != ""){
-   
-            for(let i=0;i<this.state.items.City.length;i++){
-              this.state.items.City[i].CityLine = TextValue1;
-             }
-          }
-
-           if(TextValue2 != ""){
-            
-            for(let i=0;i<this.state.items.City.length;i++){
-              this.state.items.City[i].CityDays = TextValue2;
-             }
-          }
-
-           if(TextValue3 != ""){
-      
-            for(let i=0;i<this.state.items.City.length;i++){
-              this.state.items.City[i].CityTime = TextValue3;
-             }
-          }
-              else{
-              
-              }
-              
-        } 
-*/
-
-        DeleteData(){
-                let OptionValue = document.getElementById("select").value;
-                
-                if(OptionValue ==="Skopje" || OptionValue==="Strumica" || OptionValue==="Bitola" || OptionValue==="Ohrid" ){
+    let OptionValue = document.getElementById("select").value;
+    if(OptionValue ==="Skopje" || OptionValue==="Strumica" || OptionValue==="Bitola" || OptionValue==="Ohrid" )
+    {
                      this.setState({
                             selectedCity: "",
                             selectedLine: "",
@@ -275,20 +243,61 @@ open(){
     modal.style.display="none"  
   }
 
-    close1(){
+  Edit(){
+  let db = firebase.firestore();
+  let ButtonSave = document.getElementById("button2");
+  ButtonSave.style.display="block";
+  
+  document.getElementById("button2").style.display="block";  
    document.getElementById("TxtValue").value="";
    document.getElementById("TxtValue1").value="";
   document.getElementById("TxtValue2").value="";
    document.getElementById("TxtValue3").value="";
    document.getElementById("TxtValue5").value="";
   document.getElementById("TxtValue6").value="";
+  db.collection("BiletRegistration").doc("BiletRegistration").set({
+    TipPatuvanje: document.getElementById("TxtValue1").value,
+    MestoPoaganje:  document.getElementById("TxtValue3").value,
+    Destinacija: document.getElementById("TxtValue2").value,
+    Poaganje: document.getElementById("TxtValue").value,
+    Vreme: document.getElementById("TxtValue5").value,
+    BrojPatnici: document.getElementById("TxtValue6").value
+    
+})
+
     } 
-            
+
+    saveData(){
+   let db = firebase.firestore();
+   var TipPatuvanje =  document.getElementById("TxtValue1").value;
+   var MestoPoaganje = document.getElementById("TxtValue3").value;
+   var Destinacija = document.getElementById("TxtValue2").value;
+   var Poaganje = document.getElementById("TxtValue").value;
+   var Vreme = document.getElementById("TxtValue5").value;
+   var BrojPatnici = document.getElementById("TxtValue6").value;
      
-      render() {
+   db.collection("BiletRegistration").doc("BiletRegistration").set({
+    TipPatuvanje: TipPatuvanje,
+    MestoPoaganje: MestoPoaganje,
+    Destinacija: Destinacija,
+    Poaganje: Poaganje,
+    Vreme: Vreme,
+    BrojPatnici: BrojPatnici
+})
+.then(function() {
+    console.log("Document successfully written!");
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
+
+    }
+
+
+    render() {
         
       var  { isLoaded } = this.state;
-      let i;
+      
     
       if (!isLoaded) {
         return <div>Loading</div>;
@@ -310,9 +319,7 @@ open(){
 
         
 <ul className="ull">
-         <li className="li1"> <a href="#" className="a1">Почетна</a></li>
-         <li className="li2"> <a href="#" className="a2">За нас</a> </li>
-         <li className="li3"> <a href="#" className="a3">Автобуски Станици</a> </li>
+        
          <li className="li4"> <a href="#" className="a4">Возен ред</a> </li>
          <li className="li5"> <a href="#" onClick={this.open} className="a4">Резервирај</a> </li>
          <input type="text" placeholder="Search.." className="searchbar"> 
@@ -328,18 +335,18 @@ open(){
              </div>
              &nbsp;
       
-        <form className="formm">
-        <label>
-        <img src={LittleBus} className="smallpicture"></img>
-    <select id="select" className="selected" onChange={this.handleChange}>
-     <option disabled selected value>Pick a destination</option>
-     <option value="Skopje">Скопје</option>             
-    <option value="Strumica">Струмица</option>
-    <option value="Bitola">Битола</option>
-     <option value="Ohrid">Охрид</option>
-     <option value="Prilep">Прилеп</option>
-     <option value="Gevgelija">Гевгелија</option>
-     <option value="Berovo">Берово</option>
+   <form className="formm">
+  <label>
+  <img src={LittleBus} className="smallpicture"></img>
+  <select id="select" className="selected" onChange={this.handleChange}>
+  <option disabled selected value>Pick a destination</option>
+  <option value="Skopje">Скопје</option>             
+  <option value="Strumica">Струмица</option>
+  <option value="Bitola">Битола</option>
+  <option value="Ohrid">Охрид</option>
+  <option value="Prilep">Прилеп</option>
+  <option value="Gevgelija">Гевгелија</option>
+  <option value="Berovo">Берово</option>
           </select>
         </label>
         <input type="button" className="button" id="button" value="Search" onClick={this.handleSubmit}/>
@@ -350,17 +357,17 @@ open(){
 
   <tr>
     <th>City</th>
-    <th> CityLine</th>
+    <th>CityLine</th>
     <th>Days </th>
     <th>Time</th>
   
   </tr>
   
   <tr>
-          <td>{this.state.selectedCity} </td>
-          <td>{this.state.selectedLine} </td>
-          <td>{this.state.selectedDays} </td>
-          <td>{this.state.selectedTime} </td>
+          <td id="table-display1"> </td>
+          <td id="table-display2"> </td>
+          <td id="table-display3"> </td>
+          <td id="table-display4"> </td>
          
  </tr> 
     
@@ -394,52 +401,52 @@ open(){
     <br/>
 Место на поаѓање : <select id="TxtValue2" className="modal-select1" required>
      <option disabled selected value>Одберете место</option>
-     <option value="Sk">Скопје</option>             
-    <option value="Sr">Струмица</option>
-    <option value="Bt">Битола</option>
-    <option value="Oh">Охрид</option>
+     <option value="Skopje">Скопје</option>             
+    <option value="Strumica">Струмица</option>
+    <option value="Bitola">Битола</option>
+    <option value="Ohrid">Охрид</option>
 
     </select>
     <br/>
 Дестинација : <select id="TxtValue3" className="modal-select2" required>
     <option disabled selected value>Одберете дестинација</option>       
-    <option value="Sr">Струмица</option>
-    <option value="Bt">Битола</option>
-    <option value="Oh">Охрид</option>
-    <option value="Pp">Прилеп</option>             
+    <option value="Strumica">Струмица</option>
+    <option value="Bitola">Битола</option>
+    <option value="Ohrid">Охрид</option>
+    <option value="Prilep">Прилеп</option>             
     <option value="Struga">Струга</option>
     <option value="Berovo">Берово</option>
-    <option value="Gvg">Гевгелија</option>
+    <option value="Gevgelija">Гевгелија</option>
     </select>
 
     <br/>
     Поаѓање : <input type="date" id="TxtValue" required></input><br/>
     Време : <select id="TxtValue5" className="modal-select3" required>
     <option value>00:00</option>
-    <option value="0">00:00</option>             
-    <option value="1">01:00</option>
-    <option value="2">02:00</option>
-    <option value="3">03:00</option>
-    <option value="4">04:00</option>             
-    <option value="5">05:00</option>
-    <option value="6">06:00</option>
-    <option value="7">07:00</option>
-    <option value="8">08:00</option>
-    <option value="9">09:00</option>             
-    <option value="10">10:00</option>
-    <option value="11">11:00</option>
-    <option value="12">12:00</option>
-    <option value="13">13:00</option>             
-    <option value="14">14:00</option>
-    <option value="15">15:00</option>
-    <option value="16">16:00</option>
-    <option value="17">17:00</option>
-    <option value="18">18:00</option>             
-    <option value="19">19:00</option>
-    <option value="20">20:00</option>
-    <option value="21">21:00</option>
-    <option value="22">22:00</option>             
-    <option value="23">23:00</option>
+    <option value="00:00">00:00</option>             
+    <option value="01:00">01:00</option>
+    <option value="02:00">02:00</option>
+    <option value="03:00">03:00</option>
+    <option value="04:00">04:00</option>             
+    <option value="05:00">05:00</option>
+    <option value="06:00">06:00</option>
+    <option value="07:00">07:00</option>
+    <option value="08:00">08:00</option>
+    <option value="09:00">09:00</option>             
+    <option value="10:00">10:00</option>
+    <option value="11:00">11:00</option>
+    <option value="12:00">12:00</option>
+    <option value="13:00">13:00</option>             
+    <option value="14:00">14:00</option>
+    <option value="15:00">15:00</option>
+    <option value="16:00">16:00</option>
+    <option value="17:00">17:00</option>
+    <option value="18:00">18:00</option>             
+    <option value="19:00">19:00</option>
+    <option value="20:00">20:00</option>
+    <option value="21:00">21:00</option>
+    <option value="22:00">22:00</option>             
+    <option value="23:00">23:00</option>
     
 </select>
 <br/>
@@ -449,8 +456,10 @@ open(){
 
   <div className="modal-footer">
     
-  <button className="button1" onClick={this.UpdateData} >Резервирај</button>
-  <button className="button3" onClick={this.close1}>Избриши</button>
+  <button className="button1" onClick={this.saveData} >Резервирај</button>
+  <button className="button3" onClick={this.Edit}>Ажурирај</button>
+  <button id="button2" onClick={this.saveData}>Зачувај</button>
+
 
   </div>
 
