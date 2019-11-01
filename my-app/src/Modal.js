@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
+
+
+
+
 class Modal extends Component {
   render() {
       return(
     <div className="modal-content">
     <div className="modal-header">
-      <span className="close" onClick={this.close}>&times;</span>
+      <span className="close" onClick={this.props.close}>&times;</span>
       <h2>Резервирај билет</h2>
     </div>
   
@@ -73,9 +77,9 @@ class Modal extends Component {
   
     <div className="modal-footer">
       
-    <button className="button1" onClick={this.saveData} >Резервирај</button>
-    <button className="button3" onClick={this.Edit}>Ажурирај</button>
-    <button id="button2" onClick={this.saveData}>Зачувај</button>
+    <button className="button1" onClick={this.props.saveData} >Резервирај</button>
+    <button className="button3" onClick={this.props.Edit}>Ажурирај</button>
+    <button id="button2" onClick={this.props.SaveData}>Зачувај</button>
   
   
     </div>
