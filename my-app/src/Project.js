@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Modal from ".Modal"
-import Bus from "./logo_bemidjibus.png";
-import LittleBus from "./32x32_1.gif";
+import Modal from "./Modal"
+import Footer from "./Footer"
 import './App.css';
 import BusStation from "./BusStation.jpg";
-import Facebook from "./icons8-facebook-64.png";
-import Instagram from "./icons8-instagram-64.png";
 import firebase from "firebase";
+
+
+
 
 
 
@@ -30,7 +30,6 @@ class Project extends Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.saveData = this.saveData.bind(this);
-    this.DeleteData = this.DeleteData.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   
@@ -161,7 +160,8 @@ if(CurrentValue==="Ohrid"){
 
 }
 
-if(CurrentValue==="Prilep"){
+if(CurrentValue==="Prilep")
+{
   CityRef4.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
@@ -177,7 +177,7 @@ if(CurrentValue==="Prilep"){
 
 }
 
-if(CurrentValue==="Gevgelija"){
+if(CurrentValue==="Gevgelija") {
   CityRef5.get().then(function(doc) {
     if (doc.exists) {
       document.getElementById("Error").style.display="none";
@@ -213,28 +213,8 @@ if(CurrentValue==="Berovo"){
   }
 
 
-   DeleteData(){
-    
-    let OptionValue = document.getElementById("select").value;
-    if(OptionValue ==="Skopje" || OptionValue==="Strumica" || OptionValue==="Bitola" || OptionValue==="Ohrid" )
-    {
-                     this.setState({
-                            selectedCity: "",
-                            selectedLine: "",
-                            selectedDays: "",
-                            selectedTime: ""
 
-                     })
-
-                } else {
-                    
-                }
-               
-}
-
-
-
-open(){
+  open(){
   let modal = document.getElementById("myModal");
   modal.style.display="block";
   }
@@ -245,34 +225,44 @@ open(){
   }
 
   Edit(){
-  let db = firebase.firestore();
-  let ButtonSave = document.getElementById("button2");
-  ButtonSave.style.display="block";
   
-  document.getElementById("button2").style.display="block";  
-   document.getElementById("TxtValue").value="";
-   document.getElementById("TxtValue1").value="";
-  document.getElementById("TxtValue2").value="";
-   document.getElementById("TxtValue3").value="";
-   document.getElementById("TxtValue5").value="";
-  document.getElementById("TxtValue6").value="";
+   let db = firebase.firestore();
+   var EnterID = prompt("Enter your ID");
+   let CollectionRef = db.collection("BiletRegistration");
+   document.getElementById("button2").style.display="block";
+  
+  CollectionRef.get().then(function(querySnapshot)  {
+    querySnapshot.forEach(function(doc) {
+      var BiletID = doc.data().BiletID;
+      var TipPatuvanje = doc.data().TipPatuvanje;
+      var MestoPoaganje = doc.data(). MestoPoaganje;
+      var Destinacija = doc.data().Destinacija;
+      var Vreme = doc.data().Vreme;
+      var BrojPatnici = doc.data().BrojPatnici;
+      var Poaganje = doc.data().Poaganje;
 
- 
+     if(EnterID == BiletID) {
+      
+     document.getElementById("TxtValue1").value = TipPatuvanje;
+     document.getElementById("TxtValue3").value = MestoPoaganje;
+     document.getElementById("TxtValue2").value = Destinacija;
+     document.getElementById("TxtValue5").value  = Vreme;
+     document.getElementById("TxtValue6").value  = BrojPatnici;
+     document.getElementById("TxtValue").value = Poaganje
 
-/*
-  db.collection("BiletRegistration").add({
-    TipPatuvanje: document.getElementById("TxtValue1").value,
-    MestoPoaganje:  document.getElementById("TxtValue3").value,
-    Destinacija: document.getElementById("TxtValue2").value,
-    Poaganje: document.getElementById("TxtValue").value,
-    Vreme: document.getElementById("TxtValue5").value,
-    BrojPatnici: document.getElementById("TxtValue6").value
+     }
+
+    })
+
+    }) 
+
+  
+   
     
-})
-*/
-    } 
+}
+  
+  saveData(){
 
-    saveData(){
    let db = firebase.firestore();
    var TipPatuvanje =  document.getElementById("TxtValue1").value;
    var MestoPoaganje = document.getElementById("TxtValue3").value;
@@ -280,24 +270,42 @@ open(){
    var Poaganje = document.getElementById("TxtValue").value;
    var Vreme = document.getElementById("TxtValue5").value;
    var BrojPatnici = document.getElementById("TxtValue6").value;
-     
-   db.collection("BiletRegistration").add({
-    TipPatuvanje: TipPatuvanje,
-    MestoPoaganje: MestoPoaganje,
-    Destinacija: Destinacija,
-    Poaganje: Poaganje,
-    Vreme: Vreme,
-    BrojPatnici: BrojPatnici
-})
-.then(function() {
-    console.log("Document successfully written!");
-})
-.catch(function(error) {
-    console.error("Error writing document: ", error);
-});
+   var BiletID = 1;
 
-    }
+   
+  db.collection("BiletRegistration").get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+          db.collection("BiletRegistration").add({
+            BiletID: BiletID ,
+            TipPatuvanje: TipPatuvanje,
+            MestoPoaganje: MestoPoaganje,
+            Destinacija: Destinacija,
+            Poaganje: Poaganje,
+            Vreme: Vreme,
+            BrojPatnici: BrojPatnici
+        })  
+  
 
+
+
+        if(doc.exists){
+            BiletID = BiletID + 1;
+            
+          
+        } else{
+          
+        }
+        
+         })
+
+
+    })
+  }
+        
+
+       
+           
+       
 
     render() {
         
@@ -342,7 +350,7 @@ open(){
       
    <form className="formm">
   <label>
-  <img src={LittleBus} className="smallpicture"></img>
+  
   <select id="select" className="selected" onChange={this.handleChange}>
   <option disabled selected value>Pick a destination</option>
   <option value="Skopje">Скопје</option>             
@@ -390,84 +398,20 @@ open(){
   <span className="close">&times;</span>
   
 </div>
+
 <form>
-  <Modal/>
+<Modal saveData={this.saveData}  close={this.close} Edit={this.Edit} />
 </form>
+
 </div>
 
-<footer class="footer-distributed">
- 
- <div class="footer-left">
+<footer> 
 
- <h3>Vozen<span>Red</span></h3>
-
- <p class="footer-links">
- ·<a href="#">Home</a>
-
-<br/>
-·<a href="#">Blog</a>
-
-<br/>
-·<a href="#">Pricing</a>
-
-<br/>
-·<a href="#">About</a>
-
-<br/>
-·<a href="#">Faq</a>
-
-<br/>
-·<a href="#">Contact</a>
- </p>
-
- <p class="footer-company-name">VozenRed &copy; 2019</p>
- </div>
-
- <div class="footer-center">
-
- <div>
- <i class="fa fa-map-marker"></i>
- <p> Skopje, Macedonia</p>
- </div>
-
- <div>
- <i class="fa fa-phone"></i>
- <p>+389 (0)2 2123 342</p><br/>
- <p>Факс: +389 (0)2 2402 385</p>
- </div>
-
- <div>
- <i class="fa fa-envelope"></i>
- <p><a href="mailto:support@vozenred.com">contact@vozenred.com</a></p>
- </div>
-
- </div>
-
- <div class="footer-right">
-
- <p class="footer-company-about">
- <span>About</span>
-Vozen Red helps people to see each cities bus lines that go from Skopje (CityLine,Days,Time)4
- </p>
-
- <div class="footer-icons">
-
- <a href="https://www.facebook.com"><i><img src={Facebook} className="facebook"></img></i></a> &nbsp;
- <a href="https://www.instagram.com"><i><img src={Instagram} className="instagram"></img></i></a>
- 
-
- </div>
- <div class="footer-picture">
- <img src={Bus} className="MiniBus"></img>
-
- </div>
-
- </div>
+ <Footer/>
 
  </footer>
 
-
-  </div>
+ </div>
       
         );
 
