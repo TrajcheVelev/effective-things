@@ -1,15 +1,97 @@
 import React, { Component } from 'react';
-
+import firebase from "firebase";
 
 
 
 
 class Modal extends Component {
+constructor(props){
+  super(props)
+ 
+  this.close = this.close.bind(this);
+  this.saveData = this.saveData.bind(this);
+  
+}
+
+Edit(){
+  
+  let db = firebase.firestore();
+  var EnterID = prompt("Enter your ID");
+  let CollectionRef = db.collection("BiletRegistration");
+
+ 
+ CollectionRef.get().then(function(querySnapshot)  {
+   querySnapshot.forEach(function(doc) {
+     var BiletID = doc.data().BiletID;
+     var TipPatuvanje = doc.data().TipPatuvanje;
+     var MestoPoaganje = doc.data(). MestoPoaganje;
+     var Destinacija = doc.data().Destinacija;
+     var Vreme = doc.data().Vreme;
+     var BrojPatnici = doc.data().BrojPatnici;
+     var Poaganje = doc.data().Poaganje;
+
+    if(EnterID == BiletID) {
+     
+    document.getElementById("TxtValue1").value = TipPatuvanje;
+    document.getElementById("TxtValue3").value = MestoPoaganje;
+    document.getElementById("TxtValue2").value = Destinacija;
+    document.getElementById("TxtValue5").value = Vreme;
+    document.getElementById("TxtValue6").value = BrojPatnici;
+    document.getElementById("TxtValue").value  = Poaganje
+    }
+
+   })
+
+   }) 
+
+ }
+
+ saveData(){
+
+  let db = firebase.firestore();
+  var TipPatuvanje =  document.getElementById("TxtValue1").value;
+  var MestoPoaganje = document.getElementById("TxtValue3").value;
+  var Destinacija = document.getElementById("TxtValue2").value;
+  var Poaganje = document.getElementById("TxtValue").value;
+  var Vreme = document.getElementById("TxtValue5").value;
+  var BrojPatnici = document.getElementById("TxtValue6").value;
+  var BiletID = 1;
+
+  
+ db.collection("BiletRegistration").get().then((snapshot) => {
+       snapshot.docs.forEach(doc => {
+         if(doc.exists){
+           BiletID = BiletID + 1;
+           } else{}
+       
+     })
+         db.collection("BiletRegistration").add({
+         BiletID: BiletID ,
+         TipPatuvanje: TipPatuvanje,
+         MestoPoaganje: MestoPoaganje,
+         Destinacija: Destinacija,
+         Poaganje: Poaganje,
+         Vreme: Vreme,
+         BrojPatnici: BrojPatnici
+     })  
+
+
+   })
+ }
+
+close() {
+     
+      let modal = document.getElementById("myModal");
+      modal.style.display="none"  
+    }
+
+
+    
   render() {
       return(
     <div className="modal-content">
     <div className="modal-header">
-      <span className="close" onClick={this.props.close}>&times;</span>
+      <span className="close" onClick={this.close}>&times;</span>
       <h2>Резервирај билет</h2>
     </div>
   
@@ -77,18 +159,14 @@ class Modal extends Component {
   
     <div className="modal-footer">
       
-    <button className="button1" onClick={this.props.saveData} >Резервирај</button>
-    <button className="button3" onClick={this.props.Edit}>Ажурирај</button>
-    <button id="button2" onClick={this.props.SaveData}>Зачувај</button>
-  
-  
+    <button className="button1" onClick={this.saveData} >Резервирај</button>
+    <button className="button3" onClick={this.Edit}>Ажурирај</button>
+    
     </div>
   
   </div>
       )
   }
 }
-
-
 
 export default Modal;
