@@ -6,6 +6,7 @@ import firebase from "firebase";
 import Form from "./Form";
 import Table from "./Table";
 import SlideShow from './SlideShow';
+import Header from "./Header";
 
 
 class Project extends Component{
@@ -23,8 +24,7 @@ class Project extends Component{
            
       };
      
-    
-    this.open = this.open.bind(this);
+ 
   }  
     
    componentDidMount(){
@@ -63,12 +63,9 @@ class Project extends Component{
                                })
   
                                };
+
                                
-                               
- open()  {
-  let modal = document.getElementById("myModal");
-  modal.style.display="block";
-  }
+ 
 
        render() {
         
@@ -78,22 +75,13 @@ class Project extends Component{
                     } 
             else {
                     return (
-                                 <div className="container">
-                                       <div className="w3-content w3-display-container">
-                                             
-                                                              </div>
+          <div className="container">
+           <Header open={this.props.open}/>
 <SlideShow/>
           
   <br/>
 
-<ul className="ull">
-        
-         <li className="li4"> <a href="#" className="a4">Возен ред</a> </li>
-         <li className="li5"> <a href="#" onClick={this.open} className="a4">Резервирај</a> </li>
-         <input type="text" placeholder="Search.." className="searchbar"> 
-          </input>
-         
-           </ul> 
+
              
 <hr className="HR"></hr>
 
@@ -123,13 +111,11 @@ class Project extends Component{
 <footer> 
 <Footer/>
 </footer>
-
-
- </div>
+</div>
       
-        );
+);
 
-     }
+}
 
     
      }
@@ -137,5 +123,4 @@ class Project extends Component{
     
 }
 
-
-   export default Project;
+export default Project;
