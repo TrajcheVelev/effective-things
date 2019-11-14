@@ -1,6 +1,5 @@
+
 import React from 'react';
-import logo from './logo.svg';
-import ReactDOM from 'react-dom';
 import './App.css';
 import Bus from "./logo_bemidjibus.png"
 import Macedonia from "./macedonia_flag.png"
@@ -138,3 +137,4 @@ class App extends React.Component{
 
 
 export default App;
+

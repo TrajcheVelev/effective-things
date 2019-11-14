@@ -3,7 +3,6 @@ import firebase from "firebase";
 
 
 
-
 class Modal extends Component {
 constructor(props){
   super(props)
@@ -12,6 +11,7 @@ constructor(props){
   this.saveData = this.saveData.bind(this);
   
 }
+
 
 Edit(){
   
@@ -37,7 +37,23 @@ Edit(){
     document.getElementById("TxtValue2").value = Destinacija;
     document.getElementById("TxtValue5").value = Vreme;
     document.getElementById("TxtValue6").value = BrojPatnici;
-    document.getElementById("TxtValue").value  = Poaganje
+    document.getElementById("TxtValue"). value  = Poaganje 
+   
+     /*
+  if(TxtValue1 !== TipPatuvanje || TxtValue3 !== MestoPoaganje || TxtValue2 !== Destinacija || TxtValue5 !== Vreme || TxtValue6 !== BrojPatnici || TxtValue!==Poaganje)
+      db.collection("BiletRegistration").doc().update({
+        TipPatuvanje :  document.getElementById("TxtValue1").value,
+        MestoPoaganje : document.getElementById("TxtValue3").value,
+        Destinacija : document.getElementById("TxtValue2").value,
+        Vreme : document.getElementById("TxtValue5").value,
+        BrojPatnici : document.getElementById("TxtValue6").value,
+        Poaganje : document.getElementById("TxtValue").value
+        
+ })
+ console.log(doc.data())
+  
+    */
+    
     }
 
    })
@@ -45,6 +61,9 @@ Edit(){
    }) 
 
  }
+
+
+ 
 
  saveData(){
 
@@ -79,8 +98,10 @@ Edit(){
    })
  }
 
+
+
+
 close() {
-     
       let modal = document.getElementById("myModal");
       modal.style.display="none"  
     }
@@ -123,7 +144,7 @@ close() {
       </select>
   
       <br/>
-      Поаѓање : <input type="date" id="TxtValue" required></input><br/>
+      Поаѓање : <input type="date" id="TxtValue"   required></input><br/>
       Време : <select id="TxtValue5" className="modal-select3" required>
       <option value>00:00</option>
       <option value="00:00">00:00</option>             
@@ -161,6 +182,7 @@ close() {
       
     <button className="button1" onClick={this.saveData} >Резервирај</button>
     <button className="button3" onClick={this.Edit}>Ажурирај</button>
+    
     
     </div>
   

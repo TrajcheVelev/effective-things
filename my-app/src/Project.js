@@ -16,7 +16,7 @@ class Project extends Component{
       super(props);
         
          this.state = {             
-          isLoaded: false, 
+          isLoaded:  false, 
           selectedCity: "",
           selectedDays: "",
           selectedLine: "",
@@ -39,7 +39,6 @@ class Project extends Component{
       measurementId: "G-V24XMS3NFH"
     };
     
-
     firebase.initializeApp(config);
     const db = firebase.firestore();
     const CityRef =  db.collection("buslines").doc("Skopje");
@@ -65,9 +64,7 @@ class Project extends Component{
                                };
 
                                
- 
-
-       render() {
+     render() {
         
       var  { isLoaded } = this.state;
       if (!isLoaded) {

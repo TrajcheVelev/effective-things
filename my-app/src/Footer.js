@@ -58,7 +58,7 @@ class Footer extends Component {
 
  <p className="footer-company-about">
  <span>About</span>
-Vozen Red helps people to see each cities bus lines that go from Skopje (CityLine,Days,Time)4
+Vozen Red helps people to see each cities bus lines that go from Skopje (CityLine,Days,Time)
  </p>
 
  <div className="footer-icons">

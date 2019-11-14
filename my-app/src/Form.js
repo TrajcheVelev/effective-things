@@ -145,6 +145,8 @@ class Form extends Component {
       
     }
 
+  
+
     handleChange(event) {
      this.setState({value: event.target.value}); 
  }
@@ -155,7 +157,7 @@ render() {
   <label>
   <img src={LittleBus} className="smallpicture"></img>
   <select id="select" className="selected" onChange={this.handleChange}>
-  <option disabled selected value>Pick a destination</option>
+  <option disabled selected value>Изберете дестинација</option>
   <option value="Skopje">Скопје</option>             
   <option value="Strumica">Струмица</option>
   <option value="Bitola">Битола</option>

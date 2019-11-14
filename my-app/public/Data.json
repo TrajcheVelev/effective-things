@@ -1,10 +1,36 @@
 {
     "City": [
 
-      {"CityID": "1", "CityName": "Skopje",  "CityLine": "44,33,22,11" , "CityDays": "Monday,Thursday,Friday", "CityTime":"09:00-09:45,10:00-10:45" },
-      {"CityID": "2", "CityName1": "Strumica",  "CityLine1": "2, 6, 23" , "CityDays1":  "Wednesday,Saturday,Sunday", "CityTime1": "12:00-12:45,13:00-13:45" },
-      {"CityID": "3", "CityName2":  "Bitola",  "CityLine2": "7,20,24,25" , "CityDays2": "Wednesday,Friday,Sunday", "CityTime2":"12:00-12:45,13:00-13:45" },
-      {"CityID": "4",  "CityName3": "Ohrid",  "CityLine3":"7, 20" , "CityDays3": "Monday,Friday", "CityTime3":"14:00-14:45,15:00-15:45" }
+      {
+       "CityID":   "1",
+       "CityName": "Skopje",  
+       "CityLine": "44,33,22,11" , 
+       "CityDays": "Monday,Thursday,Friday", 
+       "CityTime": "09:00-09:45,10:00-10:45" 
+      },
+      {
+       "CityID":    "2",
+       "CityName1": "Strumica",  
+       "CityLine1": "2, 6, 23" , 
+       "CityDays1": "Wednesday,Saturday,Sunday", 
+       "CityTime1": "12:00-12:45,13:00-13:45" 
+      },
+
+      {
+        "CityID":    "3", 
+        "CityName2": "Bitola",  
+        "CityLine2": "7,20,24,25" , 
+        "CityDays2": "Wednesday,Friday,Sunday", 
+        "CityTime2": "12:00-12:45,13:00-13:45" 
+      },
+
+      {
+       "CityID":    "4",  
+       "CityName3": "Ohrid",  
+       "CityLine3": "7, 20" , 
+       "CityDays3": "Monday,Friday", 
+       "CityTime3": "14:00-14:45,15:00-15:45" 
+      }
     ] 
   }
  

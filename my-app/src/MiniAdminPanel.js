@@ -348,18 +348,15 @@ City Time: <input type="text" id="TxtValue3"></input><br/>
   <button className="button1" onClick={this.UpdateData} >Save</button>
   <button className="button3" onClick={this.close1}>Delete</button>
 
-  </div>
+      </div>
 
-</div>
+            </div>
 
-</div>
+                    </div>
 
-        </div>
+                              </div>
       
-      
-
-
-        );
+            );
 
       }
 
