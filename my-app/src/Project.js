@@ -7,6 +7,7 @@ import Form from "./Form";
 import Table from "./Table";
 import SlideShow from './SlideShow';
 import Header from "./Header";
+import Contact from "./Contact";
 
 
 class Project extends Component{
@@ -83,11 +84,13 @@ class Project extends Component{
 <hr className="HR"></hr>
 
   <div>
-        <h3 className="second">Пребарување на возни линии кои тргнуваат од Скопје </h3>
+        <h3 className="second">Пребарување на возни линии низ Република Северна Македонија </h3>
  </div>
+ <Contact/>
         &nbsp;
       
            <Form handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange}/>
+     
 
            <Table/>
  

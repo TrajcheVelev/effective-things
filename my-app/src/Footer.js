@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Facebook from "./icons8-facebook-64.png";
 import Instagram from "./icons8-instagram-64.png";
 import Bus from "./logo_bemidjibus.png";
+import Logo from "./logo-footer_mk.png"
 
 class Footer extends Component {
   render() {
@@ -31,14 +32,14 @@ class Footer extends Component {
 ·<a href="#">Contact</a>
  </p>
 
- <p className="footer-company-name">VozenRed &copy; 2019</p>
+ <p className="footer-company-name">Дипломска Работа 	&reg; 2019</p>
  </div>
 
  <div className="footer-center">
 
  <div>
  <i className="fa fa-map-marker"></i>
- <p> Skopje, Macedonia</p>
+ <p> Северна Македонија</p>
  </div>
 
  <div>
@@ -49,16 +50,18 @@ class Footer extends Component {
 
  <div>
  <i className="fa fa-envelope"></i>
- <p><a href="mailto:support@vozenred.com">contact@vozenred.com</a></p>
+ <p><a href="mailto:vozenredsmk@hotmail.com?Subject=Hello%20again">vozenredsmk@hotmail.com</a></p>
  </div>
+<img src={Logo} className="LogoFooter"></img>
+
 
  </div>
 
  <div className="footer-right">
 
  <p className="footer-company-about">
- <span>About</span>
-Vozen Red helps people to see each cities bus lines that go from Skopje (CityLine,Days,Time)
+ <span>За нас</span>
+Возен ред им помага на луѓето да ги пребаруваат сите возни линии низ Република Северна Македонија
  </p>
 
  <div className="footer-icons">

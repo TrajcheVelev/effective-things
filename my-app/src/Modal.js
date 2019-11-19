@@ -120,27 +120,66 @@ close() {
   Тип на патување : <select id="TxtValue1" className="modal-select" required>
        <option disabled selected value>Одберете тип</option>
        <option value="EdnaNasoka">Една насока</option>             
-      <option value="PovratenOtvoren">Повратен отворен</option>
+      <option value="PovratenOtvoren">Повратен</option>
       </select>
       <br/>
   Место на поаѓање : <select id="TxtValue2" className="modal-select1" required>
        <option disabled selected value>Одберете место</option>
-       <option value="Skopje">Скопје</option>             
-      <option value="Strumica">Струмица</option>
-      <option value="Bitola">Битола</option>
-      <option value="Ohrid">Охрид</option>
+  <option value="Скопје">Скопје</option>             
+  <option value="Струмица">Струмица</option>
+  <option value="Битола">Битола</option>
+  <option value="Охрид">Охрид</option> 
+  <option value="Прилеп">Прилеп</option>
+  <option value="Гевгелија">Гевгелија</option>
+  <option value="Берово">Берово</option>
+  <option value="Дебар">Дебар</option>
+  <option value="Демир Хисар">Демир Хисар</option>
+  <option value="Гостивар">Гостивар</option>
+  <option value="Кавадарци">Кавадарци</option>
+  <option value="Кичево">Кичево</option>
+  <option value="Кочани">Кочани</option>
+  <option value="Крива Паланка">Крива Паланка</option>
+  <option value="Крушево">Крушево</option>
+  <option value="Куманово">Куманово</option>
+  <option value="Неготино">Неготино</option>
+  <option value="Пробиштип">Пробиштип</option>
+  <option value="Радовиш">Радовиш</option>
+  <option value="Ресен">Ресен</option>
+  <option value="Штип">Штип</option>
+  <option value="Струга">Струга</option>
+  <option value="Свети Николе">Свети Николе</option>
+  <option value="Тетово">Тетово</option>
+  <option value="Велес">Велес</option>
   
       </select>
       <br/>
   Дестинација : <select id="TxtValue3" className="modal-select2" required>
-      <option disabled selected value>Одберете дестинација</option>       
-      <option value="Strumica">Струмица</option>
-      <option value="Bitola">Битола</option>
-      <option value="Ohrid">Охрид</option>
-      <option value="Prilep">Прилеп</option>             
-      <option value="Struga">Струга</option>
-      <option value="Berovo">Берово</option>
-      <option value="Gevgelija">Гевгелија</option>
+  <option disabled selected value>Одберете дестинација</option>       
+  <option value="Скопје">Скопје</option>             
+  <option value="Струмица">Струмица</option>
+  <option value="Битола">Битола</option>
+  <option value="Охрид">Охрид</option> 
+  <option value="Прилеп">Прилеп</option>
+  <option value="Гевгелија">Гевгелија</option>
+  <option value="Берово">Берово</option>
+  <option value="Дебар">Дебар</option>
+  <option value="Демир Хисар">Демир Хисар</option>
+  <option value="Гостивар">Гостивар</option>
+  <option value="Кавадарци">Кавадарци</option>
+  <option value="Кичево">Кичево</option>
+  <option value="Кочани">Кочани</option>
+  <option value="Крива Паланка">Крива Паланка</option>
+  <option value="Крушево">Крушево</option>
+  <option value="Куманово">Куманово</option>
+  <option value="Неготино">Неготино</option>
+  <option value="Пробиштип">Пробиштип</option>
+  <option value="Радовиш">Радовиш</option>
+  <option value="Ресен">Ресен</option>
+  <option value="Штип">Штип</option>
+  <option value="Струга">Струга</option>
+  <option value="Свети Николе">Свети Николе</option>
+  <option value="Тетово">Тетово</option>
+  <option value="Велес">Велес</option>
       </select>
   
       <br/>
