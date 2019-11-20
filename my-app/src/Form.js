@@ -11,64 +11,127 @@ class Form extends Component {
                               }
 
      handleSubmit(event) {
-
-          event.preventDefault();
-          
+      event.preventDefault();
+      
          let db = firebase.firestore();
-         let CityRef =  db.collection("Skopje").doc("Strumica")
+         let CityRef =  db.collection("Skopje").doc("Strumica").collection("Route1");
+         let CityRef1 =  db.collection("Skopje").doc("Krusevo").collection("Route1");
+         let CityRef2 =  db.collection("Skopje").doc("Debar").collection("Route1");
          let CurrentValue = document.getElementById("select").value;
          let CurrentValue1 = document.getElementById("select1").value;
-         var CollectionBuslineRef = db.collection("buslines");
-       
-         if(CurrentValue){  
-          CityRef.get().then(function(doc) {
-            if (doc.exists) {
+        
+         const CityList = document.querySelector('#tableheader');
+
+function ReadCity(doc){
+  //constructor da se proba
+
+let tr = document.createElement('tr');
+
+  
+
+   let Trgnuvanje = document.createElement('td')
+   let Pristignuvanje = document.createElement('td')
+   let Prevoznik = document.createElement('td')
+   let EdnaNasoka = document.createElement('td')
+   let Povraten = document.createElement('td')
+   let Denovi = document.createElement('td')
+
+tr.setAttribute('data-id', doc.id)
+
+Trgnuvanje.textContent = doc.data().Trgnuvanje;
+Pristignuvanje.textContent = doc.data().Pristignuvanje;
+Prevoznik.textContent = doc.data().Prevoznik;
+EdnaNasoka.textContent = doc.data().EdnaNasoka;
+Povraten.textContent = doc.data().Povraten;
+Denovi.textContent = doc.data().Denovi;
+
+tr.appendChild(Trgnuvanje);
+tr.appendChild(Pristignuvanje);
+tr.appendChild(Prevoznik);
+tr.appendChild(EdnaNasoka);
+tr.appendChild(Povraten);
+tr.appendChild(Denovi);
+
+ CityList.appendChild(tr)
+        }
+        
+        if(CurrentValue ==="Скопје" && CurrentValue1==="Струмица"){
+        CityRef.get().then((snapshot) => {
+          snapshot.docs.forEach(doc => {
+            ReadCity(doc)
            
-                            
-                            document.getElementById("table-display3").innerHTML = doc.data().Trgnuvanje;
-                            document.getElementById("table-display4").innerHTML = doc.data().Pristignuvanje;
-                            document.getElementById("table-display5").innerHTML = doc.data().Prevoznik;
-                            document.getElementById("table-display6").innerHTML = doc.data().EdnaNasoka;
-                            document.getElementById("table-display7").innerHTML = doc.data().Povraten;
-                            document.getElementById("table-display8").innerHTML = doc.data().Denovi;
-                            } 
-    
-          else {
-            document.getElementById("Error").innerHTML = "Error"
-            }
-    
+          
         })
-    
-      }
+      }) 
+      
+    } else{
+          
+    }
+   if(CurrentValue ==="Скопје" && CurrentValue1==="Крушево"){
+      CityRef1.get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+          ReadCity(doc)
+         
+        
+      })
+    }) 
+  }
+
+ if(CurrentValue ==="Скопје" && CurrentValue1==="Дебар"){
+    CityRef2.get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        ReadCity(doc)
+       
+      
+    })
+  }) 
+}
 
         
 
-        CollectionBuslineRef.get().then(function(querySnapshot)  {
+
+
+      
+        
+
+       
+        /*
+if(CurrentValue==="Skopje" && CurrentValue1==="Strumica"){  
+        CityRef.get().then(function(querySnapshot)  {
           querySnapshot.forEach(function(doc) {
-            if(CurrentValue && CurrentValue1){
-               if(doc.exists){
-         
-            var TipPatuvanje = doc.data().TipPatuvanje;
-            var MestoPoaganje = doc.data(). MestoPoaganje;
-            var Destinacija = doc.data().Destinacija;
-            var Vreme = doc.data().Vreme;
-            var BrojPatnici = doc.data().BrojPatnici;
-            var Poaganje = doc.data().Poaganje;
-            var ContactNumber = doc.data().ContactNumber;
-              
-              document.getElementById("table-display1").innerHTML = CurrentValue;
+             if(doc("Strumica")){
+               
+               var CityRefcollection = db.collection("Route1");
+                      CityRefcollection.get().then(function(querySnapshot) {
+                        querySnapshot.forEach(function(doc) {
+                             var Denovi = doc.data().Denovi;
+                             var EdnaNasoka = doc.data().EdnaNasoka;
+                             var Povraten = doc.data().Povraten;
+                             var Prevoznik = doc.data().Prevoznik;
+                             var Pristignuvanje = doc.data().Pristignuvanje;
+                             var Trgnuvanje = doc.data().Trgnuvanje;
+                             document.getElementById("table-display1").value = Denovi;
+                             document.getElementById("table-display4").innerHTML = EdnaNasoka;
+                             document.getElementById("table-display5").innerHTML = Povraten;
+                             document.getElementById("table-display6").innerHTML = Prevoznik;
+                             document.getElementById("table-display1").innerHTML = CurrentValue;
               document.getElementById("table-display2").innerHTML = CurrentValue1;
-              document.getElementById("table-display3").innerHTML = ContactNumber;
-              document.getElementById("table-display4").innerHTML = Poaganje;
-  
-            
-            
-          }
+console.log(doc.data())
+
+                              })
+ })
+        
+              
+             
+      
 }
           })
 
        })
-        /*
+      }
+
+
+
           if(CurrentValue==="Skopje"){  
           CityRef.get().then(function(doc) {
             if (doc.exists) {
@@ -189,6 +252,7 @@ class Form extends Component {
       */
     
   }
+
 
   handleChange(event) {
      this.setState({value: event.target.value}); 
