@@ -49,14 +49,38 @@ class Form extends Component {
       
 function ReadCity(doc){
 
-
+let tr1 = document.createElement('tr');
 let tr = document.createElement('tr');
+
 let Trgnuvanje = document.createElement('td')
 let Pristignuvanje = document.createElement('td')
 let Prevoznik = document.createElement('td')
 let EdnaNasoka = document.createElement('td')
 let Povraten = document.createElement('td')
 let Denovi = document.createElement('td')
+
+let Trgnuvanje1 = document.createElement('th')
+let Pristignuvanje1 = document.createElement('th')
+let Prevoznik1 = document.createElement('th')
+let EdnaNasoka1= document.createElement('th')
+let Povraten1 = document.createElement('th')
+let Denovi1 = document.createElement('th')
+
+tr1.setAttribute('data-id', doc.id)
+Trgnuvanje1.textContent = "Тргнување";
+Pristignuvanje1.textContent = "Пристигнување";
+Prevoznik1.textContent = "Превозник"
+EdnaNasoka1.textContent = "Една Насока";
+Povraten1.textContent = "Повратен";
+Denovi1.textContent = "Денови";
+
+tr1.appendChild(Trgnuvanje1);
+tr1.appendChild(Pristignuvanje1);
+tr1.appendChild(Prevoznik1);
+tr1.appendChild(EdnaNasoka1);
+tr1.appendChild(Povraten1);
+tr1.appendChild(Denovi1);
+
 
 
 tr.setAttribute('data-id', doc.id)
@@ -74,6 +98,7 @@ tr.appendChild(Prevoznik);
 tr.appendChild(EdnaNasoka);
 tr.appendChild(Povraten);
 tr.appendChild(Denovi);
+CityList.appendChild(tr1);
 CityList.appendChild(tr);
         }
       

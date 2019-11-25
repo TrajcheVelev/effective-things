@@ -183,6 +183,7 @@ margin-right:78px;
         border: 1px solid rgb(102, 112, 112);
         border-radius: 1px;
       }
+      
 
       .tabela {
       font-family: "Segoe UI",Arial,sans-serif;
@@ -203,10 +204,11 @@ margin-right:78px;
         border: 1px solid #dddddd;
         text-align: center;
         padding: 8px;
-        color:rgb(76, 127, 221);
+        color:rgb(252, 252, 252);
+        background-color: #d46666;
              }
       tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #e6d9d9;
       }
 
       .formm{
@@ -215,7 +217,7 @@ margin-right:78px;
        }
 
      .tabela{
-      margin-right:28%;
+      margin-right:20%;
       margin-bottom: 300px;
       }
 
@@ -525,7 +527,7 @@ footer{
 }
  
 .footer-distributed h3 span{
-	color:  #5383d3;
+	color:  #d46666;
 }
  
  

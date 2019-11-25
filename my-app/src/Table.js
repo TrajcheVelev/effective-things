@@ -12,20 +12,14 @@ render(){
 
 
 <table className="tabela">
-<th>Тргнување</th>
-<th>Пристигнување</th>
-<th>Превозник</th>
-<th>Една Насока</th>
-<th>Повратен</th>
-<th>Денови</th>
+
 
 <tr id="tableheader">
 
-  
+
  
 
 </tr>
-
 
 
 
