@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css'
 import firebase from "firebase";
 
+
 let dictionary ={
   "Скопје" : "Skopje",
   "Струмица" : "Strumica",

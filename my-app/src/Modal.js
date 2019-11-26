@@ -3,6 +3,7 @@ import firebase from "firebase";
 
 
 
+
 class Modal extends Component {
 constructor(props){
   super(props)
@@ -39,6 +40,9 @@ Edit(){
     document.getElementById("TxtValue6").value = BrojPatnici;
     document.getElementById("TxtValue"). value  = Poaganje 
    
+      
+
+
      /*
   if(TxtValue1 !== TipPatuvanje || TxtValue3 !== MestoPoaganje || TxtValue2 !== Destinacija || TxtValue5 !== Vreme || TxtValue6 !== BrojPatnici || TxtValue!==Poaganje)
       db.collection("BiletRegistration").doc().update({
@@ -55,6 +59,8 @@ Edit(){
     */
     
     }
+
+  
 
    })
 
@@ -183,7 +189,7 @@ close() {
       </select>
   
       <br/>
-      Поаѓање : <input type="date" id="TxtValue"   required></input><br/>
+      Поаѓање : <input type="date" min="2019-11-26" max="2020-5-31" id="TxtValue"   required></input><br/>
       Време : <select id="TxtValue5" className="modal-select3" required>
       <option value>00:00</option>
       <option value="00:00">00:00</option>             

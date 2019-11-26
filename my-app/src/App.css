@@ -545,9 +545,9 @@ footer{
 }
  
 .footer-distributed .footer-company-name{
-	color:  #8f9296;
+	color:  white;
 	font-size: 14px;
-	font-weight: normal;
+	font-style: bold;
 	margin: 0;
 }
  
@@ -589,8 +589,9 @@ footer{
 }
  
 .footer-distributed .footer-center p a{
-	color:  #5383d3;
-	text-decoration: none;;
+	color: #d46666;
+  text-decoration: none;
+ 
 }
  
 .footer-distributed .footer-right{
@@ -599,18 +600,20 @@ footer{
  
 .footer-distributed .footer-company-about{
 	line-height: 20px;
-	color:  #92999f;
+	color:  white;
 	font-size: 13px;
 	font-weight: normal;
-	margin: 0;
+  margin: 0;
+  font-weight: bold;
 }
  
 .footer-distributed .footer-company-about span{
 	display: block;
-	color:  #ffffff;
-	font-size: 14px;
+  color:  white;
+	font-size: 19px;
 	font-weight: bold;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
+  
 }
  
 .footer-distributed .footer-icons{
