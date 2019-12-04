@@ -41,10 +41,8 @@ Edit(){
     document.getElementById("TxtValue"). value  = Poaganje 
    
       
-
-
-     /*
-  if(TxtValue1 !== TipPatuvanje || TxtValue3 !== MestoPoaganje || TxtValue2 !== Destinacija || TxtValue5 !== Vreme || TxtValue6 !== BrojPatnici || TxtValue!==Poaganje)
+   /*
+  
       db.collection("BiletRegistration").doc().update({
         TipPatuvanje :  document.getElementById("TxtValue1").value,
         MestoPoaganje : document.getElementById("TxtValue3").value,

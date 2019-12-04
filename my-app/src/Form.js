@@ -15,7 +15,7 @@ let dictionary ={
   "Кавадарци" : "Kavadarci",
   "Кичево" : "Kicevo",
   "Кочани" : "Kocani",
-  "Крива Паланка" : "Крива Паланка",
+  "Крива Паланка" : "Kriva Palanka",
   "Крушево" : "Krusevo",
   "Куманово" : "Kumanovo",
   "Неготино" : "Negotino",
