@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Facebook from "./icons8-facebook-64.png";
 import Instagram from "./icons8-instagram-64.png";
 import Bus from "./logo_bemidjibus.png";
-import Logo from "./logo-footer_mk.png"
+import Logo from "./logo-footer_mk.png";
 
 class Footer extends Component {
   render() {

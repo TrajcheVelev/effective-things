@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import BusLinesLogo from "./BusLinesLogo.png";
+import Contact from "./Contact";
 
 
 class Header extends Component {
@@ -14,13 +16,21 @@ class Header extends Component {
 <header id="header">
   
    <ul className="ull">
-        
-        <li className="li4"> <a href="#" className="a4">Возен ред</a> </li>
-        <li className="li5"> <a href="#" onClick={this.open} className="a4">Резервирај</a> </li>
-        <input type="text" placeholder="Search" className="searchbar"> 
-         </input>
-        
-          </ul>     
+   <input type="text" placeholder="Search" className="searchbar"> 
+         </input> 
+        <li className="li4"> <img src={BusLinesLogo} className="BusLinesLogo"></img> </li>
+        <hr className = "horizontalrule"></hr>
+         <ul>
+             
+   
+    
+    <li className="li5"> <a href="#"className="a4">Почетна</a> </li>
+ <li className="li5"> <a href="#" onClick={this.open} className="a4">Резервирај билет</a> </li>
+ <li className="li5"> <a href="#"className="a4"><Contact/></a> </li>
+
+         </ul>
+ </ul>    
+
  
    </header>
 )

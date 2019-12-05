@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
- import MiniPhone from "./icons8-phone-32.png";
+ 
 
 class Contact extends Component{
     render(){
@@ -8,7 +8,7 @@ class Contact extends Component{
 <div id='cssmenu'>
 <ul>
    
-   <li className='active has-sub'><a href='#'><span>Контакт</span></a>
+   <li className='activehas-sub'><a href='#'><span>Контакт</span></a>
       <ul>
          <li className='has-sub'><a href='#'><span>Скопје</span></a>
             <ul>

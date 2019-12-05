@@ -78,15 +78,15 @@ class Project extends Component{
 <SlideShow/>
           
   <br/>
-
+  
 
              
 <hr className="HR"></hr>
-
+<br></br>
   <div>
         <h3 className="second">Пребарување на возни линии низ Република Северна Македонија </h3>
  </div>
- <Contact/>
+
         &nbsp;
       
            <Form handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange}/>
