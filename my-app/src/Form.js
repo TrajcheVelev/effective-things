@@ -3,7 +3,8 @@ import './App.css'
 import firebase from "firebase";
 
 
-let dictionary = {
+
+const dictionary = {
   "Скопје": "Skopje",
   "Струмица": "Strumica",
   "Битола": "Bitola",
@@ -31,6 +32,8 @@ let dictionary = {
 
 
 }
+
+
 class Form extends Component {
   constructor(props) {
     super(props)
@@ -50,23 +53,23 @@ class Form extends Component {
 
     function ReadCity(doc) {
 
-      const tableformat ={
-          tr1 : document.createElement('tr'),
-          tr  : document.createElement('tr'),
-          td : document.createElement("td"),
-          td1 : document.createElement("td"),
-          td2 : document.createElement("td"),
-          td3 : document.createElement("td"),
-          td4 : document.createElement("td"),
-          td5 : document.createElement("td"),
-          th : document.createElement("th"),
-          th1 : document.createElement("th"),
-          th2 : document.createElement("th"),
-          th3 : document.createElement("th"),
-          th4 : document.createElement("th"),
-          th5 : document.createElement("th")
+      const tableformat = {
+        tr1: document.createElement('tr'),
+        tr: document.createElement('tr'),
+        td: document.createElement("td"),
+        td1: document.createElement("td"),
+        td2: document.createElement("td"),
+        td3: document.createElement("td"),
+        td4: document.createElement("td"),
+        td5: document.createElement("td"),
+        th: document.createElement("th"),
+        th1: document.createElement("th"),
+        th2: document.createElement("th"),
+        th3: document.createElement("th"),
+        th4: document.createElement("th"),
+        th5: document.createElement("th")
       }
-      
+
       let trth1 = tableformat.tr1;
       let trtd = tableformat.tr;
 
@@ -103,7 +106,7 @@ class Form extends Component {
       trtd.appendChild(tableformat.td3);
       trtd.appendChild(tableformat.td4);
       trtd.appendChild(tableformat.td5);
-      
+
       CityList.appendChild(trth1);
       CityList.appendChild(trtd);
     }
@@ -118,9 +121,6 @@ class Form extends Component {
       });
     });
 
-
-
-
   }
 
 
@@ -128,39 +128,40 @@ class Form extends Component {
     this.setState({ value: event.target.value });
   }
 
+  /*
+  Add() {
+    let selectbox = document.getElementById("select");
+
+    for (let i = 0; i < dictionary.length; i++) {
+}
+}
+
+*/
+
   render() {
 
     return (
       <form className="formm">
         <label>
 
-          <span className="pocetnadestinacija">Почетна дестинација :</span> <select id="select" className="selected" onChange={this.handleChange}>
+          <span className="pocetnadestinacija">Почетна дестинација :</span>
+
+          <select id="select" className="selected" onChange={this.handleChange}>
+
             <option disabled selected value>Изберете дестинација</option>
-            <option value="Скопје">Скопје</option>
-            <option value="Струмица">Струмица</option>
-            <option value="Битола">Битола</option>
-            <option value="Охрид">Охрид</option>
-            <option value="Прилеп">Прилеп</option>
-            <option value="Гевгелија">Гевгелија</option>
-            <option value="Берово">Берово</option>
-            <option value="Дебар">Дебар</option>
-            <option value="Демир Хисар">Демир Хисар</option>
-            <option value="Гостивар">Гостивар</option>
-            <option value="Кавадарци">Кавадарци</option>
-            <option value="Кичево">Кичево</option>
-            <option value="Кочани">Кочани</option>
-            <option value="Крива Паланка">Крива Паланка</option>
-            <option value="Крушево">Крушево</option>
-            <option value="Куманово">Куманово</option>
-            <option value="Неготино">Неготино</option>
-            <option value="Пробиштип">Пробиштип</option>
-            <option value="Радовиш">Радовиш</option>
-            <option value="Ресен">Ресен</option>
-            <option value="Штип">Штип</option>
-            <option value="Струга">Струга</option>
-            <option value="Свети Николе">Свети Николе</option>
-            <option value="Тетово">Тетово</option>
-            <option value="Велес">Велес</option>
+            {
+
+              Object.keys(dictionary).map((element) => (
+
+
+
+                <option key={element} value={element}>{element}</option>
+
+              ))
+            }
+
+
+
           </select>
 
         </label>
@@ -168,33 +169,20 @@ class Form extends Component {
         <br />
         <br />
         <label>
-          <span className="krajnadestinacija">Крајна дестинација : </span>  <select id="select1" className="selected1" onChange={this.handleChange}>
+          <span className="krajnadestinacija">Крајна дестинација : </span>
+          <select id="select1" className="selected1" onChange={this.handleChange}>
             <option disabled selected value>Изберете дестинација</option>
-            <option value="Скопје">Скопје</option>
-            <option value="Струмица">Струмица</option>
-            <option value="Битола">Битола</option>
-            <option value="Охрид">Охрид</option>
-            <option value="Прилеп">Прилеп</option>
-            <option value="Гевгелија">Гевгелија</option>
-            <option value="Берово">Берово</option>
-            <option value="Дебар">Дебар</option>
-            <option value="Демир Хисар">Демир Хисар</option>
-            <option value="Гостивар">Гостивар</option>
-            <option value="Кавадарци">Кавадарци</option>
-            <option value="Кичево">Кичево</option>
-            <option value="Кочани">Кочани</option>
-            <option value="Крива Паланка">Крива Паланка</option>
-            <option value="Крушево">Крушево</option>
-            <option value="Куманово">Куманово</option>
-            <option value="Неготино">Неготино</option>
-            <option value="Пробиштип">Пробиштип</option>
-            <option value="Радовиш">Радовиш</option>
-            <option value="Ресен">Ресен</option>
-            <option value="Штип">Штип</option>
-            <option value="Струга">Струга</option>
-            <option value="Свети Николе">Свети Николе</option>
-            <option value="Тетово">Тетово</option>
-            <option value="Велес">Велес</option>
+
+            {
+
+              Object.keys(dictionary).map((element) => (
+
+
+
+                <option key={element} value={element}>{element}</option>
+
+              ))
+            }
           </select>
         </label>
         <br></br>
