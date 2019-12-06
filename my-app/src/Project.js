@@ -7,7 +7,7 @@ import Form from "./Form";
 import Table from "./Table";
 import SlideShow from './SlideShow';
 import Header from "./Header";
-import Contact from "./Contact";
+
 
 
 class Project extends Component{
@@ -18,10 +18,7 @@ class Project extends Component{
         
          this.state = {             
           isLoaded:  false, 
-          selectedCity: "",
-          selectedDays: "",
-          selectedLine: "",
-          selectedTime: ""
+          
            
       };
      
@@ -41,28 +38,11 @@ class Project extends Component{
     };
     
     firebase.initializeApp(config);
-    const db = firebase.firestore();
-    const CityRef =  db.collection("buslines").doc("Skopje");
-    const CityRef1 = db.collection("buslines").doc("Strumica");
-    const CityRef2 = db.collection("buslines").doc("Bitola");
-    const CityRef3 = db.collection("buslines").doc("Ohrid");
-    const CityRef4 = db.collection("buslines").doc("Prilep");
-    const CityRef5 = db.collection("buslines").doc("Gevgelija");
-    const CityRef6 = db.collection("buslines").doc("Berovo");
-
-
-     this.setState ({
-                  isLoaded:true,
-                  items: CityRef,
-                  items1:CityRef1,
-                  items2:CityRef2,
-                  items3:CityRef3,
-                  items4:CityRef4,
-                  items5:CityRef5,
-                  items6:CityRef6
-                               })
   
-                               };
+   this.setState ({
+                  isLoaded:true,
+          })
+  };
 
                                
      render() {
