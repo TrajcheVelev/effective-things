@@ -44,7 +44,7 @@
     margin-top: 14px;
     font-size: 20px;
     text-align: left;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: monospace;
 }
 
 .BusLinesLogo {
@@ -63,11 +63,10 @@
 .li3,
 .li4,
 .li5 {
-    font-size: 25px;
+    font-size:20px;
     display: inline-block;
     font-family: monospace;
     padding: 0 50px 0 30px;
-    font-family: Courier 'Courier New', Courier, monospace;
     text-decoration: none;
 }
 
@@ -79,7 +78,7 @@
 .inline6 {
     display: inline-block;
     padding: 0 40px 0 30px;
-    font-family: Courier 'Courier New', Courier, monospace;
+    font-family: monospace; 
     text-decoration: none;
 }
 
@@ -388,7 +387,7 @@ tr:nth-child(even) {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 370;
     padding-top: 100px;
     left: 0;
     top: 0;
@@ -454,7 +453,7 @@ tr:nth-child(even) {
 
 .close:hover,
 .close:focus {
-    color: red;
+    color: rgb(250, 190, 78);
     text-decoration: none;
     cursor: pointer;
 }
@@ -492,7 +491,7 @@ tr:nth-child(even) {
 }
 
 
-/* Add Animation */
+
 
 @keyframes animatetop {
     from {
@@ -826,7 +825,7 @@ ul {
     padding: 1;
     margin: 3;
     line-height: 1;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: monospace;
     font-weight: 300;
     font-size: 18px;
     color: #ffffff;
@@ -835,7 +834,8 @@ ul {
     -moz-transition: all ease .3s;
     -ms-transition: all ease .3s;
     transition: all ease .3s;
-    z-index: 999;
+    z-index: 349;
+   
 }
 
 #cssmenu:before,
@@ -858,36 +858,34 @@ ul {
 #cssmenu ul {
     background: rgb(48, 43, 43);
     border-radius: 3px;
-    
-    -webkit-box-shadow: 0 1px 2px rgba(2, 2, 2, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    -o-box-shadow: 0 1px 2px rgba(2, 2, 2, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    -moz-box-shadow: 0 1px 2px rgba(2, 2, 2, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    -ms-box-shadow: 0 1px 2px rgba(2, 2, 2, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    box-shadow: 0 1px 2px rgba(2, 2, 2, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    font-family: monospace;
 }
 
 #cssmenu ul>li {
-    float: left;
+    margin-top : 20px;
     list-style: none;
 }
 
 #cssmenu ul>li>a {
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 9px 17px;
     position: relative;
     display: inline-block;
     white-space: nowrap;
-   
     font-family: monospace;
+    font-weight: 300;
+    font-size:20px;
 }
 
 #cssmenu ul>li>a:hover {
+    
     background: rgb(175, 46, 46);
+    
     -webkit-box-shadow: inset 0 0 1px #1e2e4f;
     -o-box-shadow: inset 0 0 1px #1e2e4f;
     -moz-box-shadow: inset 0 0 1px #1e2e4f;
     -ms-box-shadow: inset 0 0 1px #1e2e4f;
-    box-shadow: inset 0 0 1px #1e2e4f;
+    box-shadow: inset 0 0 0px #1e2e4f;
     -webkit-transition: all ease .3s;
     -o-transition: all ease .3s;
     -moz-transition: all ease .3s;
@@ -896,6 +894,7 @@ ul {
 }
 
 #cssmenu ul>li>a:hover:before {
+    font-size:20px;   
     content: "";
     z-index: 2;
     position: absolute;
@@ -905,7 +904,7 @@ ul {
     border-right: 0;
     width: 100%;
     height: 100%;
-    top: 0;
+    top: 1;
     left: -1px;
     opacity: .2;
 }
@@ -934,42 +933,50 @@ ul {
     opacity: 1;
     visibility: visible;
     position: absolute;
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 6px 3px;
     -webkit-box-shadow: none;
     -o-box-shadow: none;
     -moz-box-shadow: none;
     -ms-box-shadow: none;
     box-shadow: none;
+    
 }
 
 #cssmenu>ul>li>ul {
+    
     width: 140px;
     position: absolute;
+  
 }
 
 #cssmenu>ul>li>ul>li {
     float: none;
     position: relative;
+   
 }
 
 #cssmenu>ul>li>ul>li>ul {
     opacity: 0;
     visibility: hidden;
     position: absolute;
+    
 }
 
 #cssmenu>ul>li>ul>li:hover>ul {
     opacity: 1;
     visibility: visible;
     position: absolute;
+    
 }
 
 #cssmenu>ul>li>ul>li>ul {
     left: 140px;
     top: 1px;
     width: 200px;
+    
 }
 
 #cssmenu>ul>li>ul>li>ul>li {
     float: none;
+    
 }

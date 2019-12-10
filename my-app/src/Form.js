@@ -29,8 +29,6 @@ const dictionary = {
   "Свети Николе": "Sveti Nikole",
   "Тетово": "Tetovo",
   "Велес": "Veles",
-
-
 }
 
 
