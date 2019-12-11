@@ -73,6 +73,7 @@ class Form extends Component {
 
 
       trth1.setAttribute('data-id', doc.id)
+      
       tableformat.th.textContent = "Тргнување";
       tableformat.th1.textContent = "Пристигнување";
       tableformat.th2.textContent = "Превозник";
@@ -158,9 +159,7 @@ class Form extends Component {
               ))
             }
 
-
-
-          </select>
+     </select>
 
         </label>
         <br />

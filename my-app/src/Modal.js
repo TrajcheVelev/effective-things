@@ -40,21 +40,12 @@ class Modal extends Component {
           document.getElementById("TxtValue6").value = BrojPatnici;
           document.getElementById("TxtValue").value = Poaganje
 
-
-
-
         }
-
-
-
       })
 
     })
 
   }
-
-
-
 
   saveData() {
 
@@ -88,9 +79,6 @@ class Modal extends Component {
 
     })
   }
-
-
-
 
   close() {
     let modal = document.getElementById("myModal");
@@ -174,7 +162,7 @@ class Modal extends Component {
           </select>
 
           <br />
-          Поаѓање : <input type="date" min="2019-11-26" max="2020-5-31" id="TxtValue" required></input><br />
+          Поаѓање : <input type="date" min="2019-12-11" max="2020-5-31" id="TxtValue" required></input><br />
           Време : <select id="TxtValue5" className="modal-select3" required>
             <option value>00:00</option>
             <option value="00:00">00:00</option>

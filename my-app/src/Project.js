@@ -59,9 +59,7 @@ class Project extends Component{
           
   <br/>
   
-
-             
-<hr className="HR"></hr>
+  
 <br></br>
   <div>
         <h3 className="second">Пребарување на возни линии низ Република Северна Македонија </h3>
